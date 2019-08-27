@@ -2,6 +2,8 @@
 
 ### React Development test
 
+[Demo in Now](https://reversi-game.sebastiancardoso92.now.sh)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
