@@ -1,0 +1,10 @@
+.Board {
+  border: 2px solid white;
+  margin: 2em;
+}
+
+.Board td {
+  border: 1px solid white;
+  height: 50px;
+  width: 50px;
+}

@@ -1,6 +1,7 @@
 {
   "name": "reversi-game",
   "version": "0.1.0",
+  "author": "Sebastian Cardoso Castillo <sebastiancardoso92@gmail.com>",
   "private": true,
   "dependencies": {
     "react": "^16.9.0",
@@ -10,7 +11,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
