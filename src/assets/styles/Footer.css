@@ -1,0 +1,9 @@
+.footer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+}

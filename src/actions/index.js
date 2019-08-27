@@ -1,9 +1,9 @@
-export const setNamePlayerOne = (payload) => ({
-  type: 'SET_NAME_PLAYER_ONE',
+export const setNamePlayers = (payload) => ({
+  type: 'SET_NAME_PLAYERS',
   payload,
 });
 
-export const setNamePlayerTwo = (payload) => ({
-  type: 'SET_NAME_PLAYER_TWO',
+export const setWinner = (payload) => ({
+  type: 'SET_WINNER',
   payload,
 });

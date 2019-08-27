@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import reducer from './reducers';
 
-import './index.css';
+import App from './routes/App';
 
-import StartScreen from './containers/StartScreen';
+import './index.css';
 
 const initialState = {
   namePlayerOne: '',
@@ -18,6 +18,6 @@ const store = createStore(reducer, initialState, composeEnhancers());
 
 ReactDOM.render(
   <Provider store={store}>
-    <StartScreen />
+    <App />
   </Provider>, document.getElementById('root'),
 );

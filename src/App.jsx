@@ -1,12 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 import Board from './containers/Board';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <header>
         <p>
           Reversi Game
@@ -15,9 +13,6 @@ function App() {
       <main>
         <Board />
       </main>
-      <footer>
-        <img src={logo} className="App-logo" alt="logo" />
-      </footer>
     </div>
   );
 }

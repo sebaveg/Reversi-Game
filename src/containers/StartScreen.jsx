@@ -1,29 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setNamePlayerOne, setNamePlayerTwo } from '../actions';
+import { Link } from 'react-router-dom';
+import { setNamePlayers } from '../actions';
 
 import '../assets/styles/StartScreen.css';
 
-const StartScreen = () => {
+const StartScreen = (props) => {
+  const [namePlayers, setValues] = useState({
+    namePlayerOne: '',
+    namePlayerTwo: '',
+  });
+
+  const handleInput = (event) => {
+    setValues({
+      ...namePlayers,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.setNamePlayers(namePlayers);
+  };
+
   return (
-    <div className="formWrapper">
-      <form>
-        <div className="form-group">
+    <section className='formWrapper'>
+      <h4>Ingrese el nombre de los jugadores</h4>
+      <form onSubmit={handleSubmit}>
+        <div className='form-group'>
           <h2>Player one</h2>
-          <input type="text" name="playerOne" placeholder="Insert name for player one" />
+          <input type='text' name='namePlayerOne' placeholder='Insert name for player one' onChange={handleInput} />
         </div>
-        <div className="form-group">
+        <div className='form-group'>
           <h2>Player two</h2>
-          <input type="text" name="playerTwo" placeholder="Insert name for player one" />
+          <input type='text' name='namePlayerTwo' placeholder='Insert name for player one' onChange={handleInput} />
         </div>
+        <button type='submit' className='button'>
+          <Link to='/gaming'>Start Game</Link>
+        </button>
       </form>
-    </div>
+    </section>
   );
 };
 
 const mapDispatchToProps = {
-  setNamePlayerOne,
-  setNamePlayerTwo,
+  setNamePlayers,
 };
 
 export default connect(null, mapDispatchToProps)(StartScreen);
