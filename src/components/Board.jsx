@@ -5,7 +5,7 @@ import '../assets/styles/Board.css';
 const Board = (props) => {
   const { rows, cols } = props;
   return (
-    rows && cols
+    (rows && cols)
       ? (
         <table className="Board">
           <tbody>

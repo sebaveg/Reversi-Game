@@ -6,8 +6,8 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cols: ['1', '2', '3', '4', '5', '6', '7', '8'],
       rows: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+      cols: ['1', '2', '3', '4', '5', '6', '7', '8'],
     };
   }
 
