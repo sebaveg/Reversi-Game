@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Board from './containers/Board'
+import Board from './containers/Board';
 
 function App() {
   return (
