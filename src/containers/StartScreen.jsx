@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setNamePlayers } from '../actions';
+import { setNamePlayers, setColorPlayers } from '../actions';
 
 import '../assets/styles/StartScreen.css';
 
@@ -21,7 +21,14 @@ const StartScreen = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.setNamePlayers(namePlayers);
+    // props.setColorPlayers(this.randomColorDisk());
   };
+
+  // const randomColorDisk = () => {
+  //   // get value between 0 and 1. If value > 0.5 is 50% probability
+  //   const colorDisk = Math.random() > 0.5 ? 'black' : 'white';
+  //   return { colorPlayerOne: colorDisk, colorPlayerTwo: colorDisk === 'black' ? 'white' : 'black' };
+  // };
 
   return (
     <section className='formWrapper'>
@@ -45,6 +52,7 @@ const StartScreen = (props) => {
 
 const mapDispatchToProps = {
   setNamePlayers,
+  setColorPlayers,
 };
 
 export default connect(null, mapDispatchToProps)(StartScreen);

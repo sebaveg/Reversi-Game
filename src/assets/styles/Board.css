@@ -1,10 +1,44 @@
+.wrapperBoard {
+  margin: 0 auto;
+}
+
 .Board {
+  background-color: #8756ca;
   border: 2px solid white;
   margin: 2em;
 }
 
 .Board td {
   border: 1px solid white;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.circleWhite {
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.circleBlack {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.turn {
+  color: green;
+  background: peru;
 }
