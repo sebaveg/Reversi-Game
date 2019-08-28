@@ -3,13 +3,31 @@ const reducer = (state, action) => {
     case 'SET_NAME_PLAYERS':
       return {
         ...state,
-        namePlayerOne: action.payload.namePlayerOne,
-        namePlayerTwo: action.payload.namePlayerTwo,
+        playerOne: {
+          ...state.playerOne,
+          name: action.payload.namePlayerOne,
+        },
+        playerTwo: {
+          ...state.playerTwo,
+          name: action.payload.namePlayerTwo,
+        },
       };
     case 'SET_COLOR_PLAYERS':
       return {
         ...state,
-        ...action.payload,
+        playerOne: {
+          ...state.playerOne,
+          colorDisk: action.payload,
+        },
+        playerTwo: {
+          ...state.playerTwo,
+          colorDisk: action.payload === 'white' ? 'black' : 'white',
+        },
+      };
+    case 'SET_ERROR':
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

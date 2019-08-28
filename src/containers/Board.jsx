@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import BoardLayout from '../components/Board';
 
-class Board extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rows: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-      cols: ['1', '2', '3', '4', '5', '6', '7', '8'],
-    };
-  }
+const Board = ({
+ playerOne, playerTwo, rows, cols 
+}) => (
+    <BoardLayout
+      cols={cols}
+      rows={rows}
+      playerOne={playerOne}
+      playerTwo={playerTwo}
+    />
+  );
 
-  render() {
-    const { cols, rows } = this.state;
-    return (
-      <BoardLayout cols={cols} rows={rows} />
-    );
-  }
-}
+const mapStateToProps = (state) => ({
+    playerOne: state.playerOne.name,
+    playerTwo: state.playerTwo.name,
+    rows: state.board.rows,
+    cols: state.board.cols,
+  });
 
-export default Board;
+export default connect(mapStateToProps, null)(Board);

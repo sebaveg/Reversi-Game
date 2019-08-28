@@ -9,8 +9,19 @@ import App from './routes/App';
 import './index.css';
 
 const initialState = {
-  namePlayerOne: '',
-  namePlayerTwo: '',
+  error: '',
+  board: {
+    rows: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+    cols: ['1', '2', '3', '4', '5', '6', '7', '8'],
+  },
+  playerOne: {
+    name: '',
+    colorDisk: '',
+  },
+  playerTwo: {
+    name: '',
+    colorDisk: '',
+  },
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
