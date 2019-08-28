@@ -7,10 +7,6 @@ import Score from '../components/Score';
 import '../assets/styles/Game.css';
 
 class GameScreen extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <>
