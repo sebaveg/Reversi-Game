@@ -1,9 +1,13 @@
 import React from 'react';
 
+import '../assets/styles/Score.css';
+
 const Score = (props) => (
   <>
-    <h1>Score</h1>
-    <h3>{props.player}</h3>
+    <div className="wrapperScore">
+      <h2>{props.player}</h2>
+      <div className={`circle${props.color}`} />
+    </div>
   </>
 );
 

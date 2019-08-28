@@ -4,16 +4,20 @@ import { connect } from 'react-redux';
 import Board from './Board';
 import Score from '../components/Score';
 
+import '../assets/styles/Game.css';
+
 class GameScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    console.log(this.props);
     return (
       <>
-        <h2>Component history</h2>
-        <div className="wrapperGridResponsive">
-          <Score player={props.playerOne} />
+        <div className="wrapperResponsive">
+          <Score player={this.props.playerOne.name} color={this.props.playerOne.colorDisk} />
           <Board />
-          <Score player={props.playerTwo} />
+          <Score player={this.props.playerTwo.name} color={this.props.playerTwo.colorDisk} />
         </div>
       </>
     );
@@ -21,8 +25,8 @@ class GameScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  playerOne: state.playerOne.name,
-  playerTwo: state.playerTwo.name,
+  playerOne: state.playerOne,
+  playerTwo: state.playerTwo,
 });
 
 export default connect(mapStateToProps, null)(GameScreen);

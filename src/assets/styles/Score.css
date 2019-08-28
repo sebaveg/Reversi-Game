@@ -1,0 +1,19 @@
+.wrapperScore {
+  margin: 0 auto;
+}
+
+.circleWhite {
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.circleBlack {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  margin: 0 auto;
+  border-radius: 50%;
+}
