@@ -1,0 +1,15 @@
+.black, .white {
+  height: 45px;
+  width: 45px;
+  border: 2px solid grey;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+}
