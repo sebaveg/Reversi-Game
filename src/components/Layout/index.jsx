@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 import '../../assets/styles/App.css';
 
-const Layout = ({ children }) => (
+const Layout = ({ children = {} }) => (
   <div className="App">
     <Header />
     {children}

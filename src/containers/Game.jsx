@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Board from './Board';
-import Score from '../components/Score';
+import Players from '../components/Players';
 
 import '../assets/styles/Game.css';
 
 class GameScreen extends Component {
-  constructor() {
-    super()
-  }
   render() {
     const { playerOne, playerTwo, turn } = this.props;
     return (
       <>
         <div className="wrapperResponsive">
-          <Score player={playerOne.name} color={playerOne.colorDisk} turn={turn} />
+          <Players player={playerOne.name} color={playerOne.colorDisk} turn={turn} />
           <Board />
-          <Score player={playerTwo.name} color={playerTwo.colorDisk} turn={turn} />
+          <Players player={playerTwo.name} color={playerTwo.colorDisk} turn={turn} />
         </div>
       </>
     );

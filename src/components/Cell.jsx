@@ -2,12 +2,14 @@ import React from 'react';
 
 import '../assets/styles/Cell.css';
 
-const Cell = ({ children }) => (
-  <td className="cell">
-    {children !== 'W' && children !== 'B' ? children : null }
-    <div className={`${children}` === 'W' ? 'black' : `${children}` === 'B' ? 'white' : ''} />
-  </td>
-
-);
+const Cell = ({ children }) => {
+  const { id, disk } = children
+  return (
+    <td className="cell">
+      {disk !== 'black' && disk !== 'white' ? id : null }
+      <div className={`${disk}` === 'black' ? 'black' : `${disk}` === 'white' ? 'white' : ''} />
+    </td>
+  )
+};
 
 export default Cell;

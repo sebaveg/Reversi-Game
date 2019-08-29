@@ -8,10 +8,3 @@
   box-shadow: 0 0 15px -5px #fff;
   margin: 1em;
 }
-
-.Board td {
-  border: 1px solid white;
-  color: rgba(255, 255, 255, .2);
-  height: 60px;
-  width: 60px;
-}

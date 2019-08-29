@@ -21,6 +21,7 @@ module.exports = {
     'react',
   ],
   rules: {
-    "allowForLoopAfterthoughts": true
+    "allowForLoopAfterthoughts": true,
+    "react/prefer-stateless-function": [0, {"ignorePureComponents": true }]
   },
 };

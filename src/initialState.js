@@ -2,7 +2,7 @@ export const initialState = {
   error: '',
   board: {
     rows: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-    cols: ['1', '2', '3', '4', '5', '6', '7', '8'],
+    cols: ['1', '2', '3', '4', '5', '6', '7', '8']
   },
   playerOne: {
     name: '',
@@ -13,12 +13,12 @@ export const initialState = {
     colorDisk: '',
   },
   posDisksWhite: [
+    [3, 3],
     [4, 4],
-    [5, 5],
   ],
   posDisksBlack: [
-    [4, 5],
-    [5, 4],
+    [3, 4],
+    [4, 3]
   ],
   turn: 'Black',
   winner: '',
