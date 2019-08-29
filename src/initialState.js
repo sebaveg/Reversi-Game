@@ -18,7 +18,7 @@ export const initialState = {
     [3, 4],
     [4, 3]
   ],
-  turn: 'Black', // or White
+  currentPlayer: 'black', // or white
   winner: '',
   lostTurn: null
 };

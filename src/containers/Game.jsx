@@ -8,13 +8,13 @@ import '../assets/styles/Game.css';
 
 class GameScreen extends Component {
   render() {
-    const { playerOne, playerTwo, turn } = this.props;
+    const { playerOne, playerTwo, currentPlayer } = this.props;
     return (
       <>
         <div className="wrapperResponsive">
-          <Players player={playerOne.name} color={playerOne.colorDisk} turn={turn} />
+          <Players player={playerOne.name} color={playerOne.colorDisk} currentPlayer={currentPlayer} />
           <Board />
-          <Players player={playerTwo.name} color={playerTwo.colorDisk} turn={turn} />
+          <Players player={playerTwo.name} color={playerTwo.colorDisk} currentPlayer={currentPlayer} />
         </div>
       </>
     );
@@ -24,7 +24,7 @@ class GameScreen extends Component {
 const mapStateToProps = (state) => ({
   playerOne: state.playerOne,
   playerTwo: state.playerTwo,
-  turn: state.turn,
+  currentPlayer: state.currentPlayer,
 });
 
 export default connect(mapStateToProps, null)(GameScreen);

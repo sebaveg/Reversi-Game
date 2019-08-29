@@ -12,7 +12,7 @@ const StartScreen = (props) => {
 
   const randomColorDisk = () => {
     // get value between 0 and 1. If value > 0.5 is 50% probability
-    const colorDisk = Math.random() > 0.5 ? 'White' : 'Black';
+    const colorDisk = Math.random() > 0.5 ? 'white' : 'black';
     return colorDisk;
   };
 

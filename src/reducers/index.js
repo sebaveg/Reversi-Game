@@ -21,7 +21,7 @@ const reducer = (state, action) => {
         },
         playerTwo: {
           ...state.playerTwo,
-          colorDisk: action.payload === 'White' ? 'Black' : 'White', // assign opposite color to player one
+          colorDisk: action.payload === 'white' ? 'black' : 'white', // assign opposite color to player one
         },
       };
     case 'STARTED':

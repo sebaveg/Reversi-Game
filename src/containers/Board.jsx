@@ -9,9 +9,10 @@ const directions = [
   [0, -1], // left
   [-1, 0], // up
   [1, 0], // down
-  [1, 1], // diagonal - down right
-  [-1, 1], // diagonal - up right                        
-  [-1, -1], // diagonal - up left
+  [1, 1], // down right
+  [1, -1], // down left
+  [-1, 1], // up right                        
+  [-1, -1] // up left
 ]
 
 class Board extends React.Component {
@@ -44,12 +45,29 @@ class Board extends React.Component {
     this.props.setBoard(board)
   }
   
+  diskOponent = () => this.props.currentPlayer === 'white'?'black':'white'
+  inBoard = (x, y) => x >= 0 && x < 8 && y >= 0 && y < 8
+  
   canPutDisk(x, y) {
     const board = this.props.board
+    let can = false
     if (board[x][y].disk) return false;
+    let X, Y, cantDisks
     directions.forEach(direction => {
-      // ?
+      cantDisks = 0
+      X = x
+      Y = y
+      do {
+        X = X + direction[0]
+        Y = Y + direction[1]
+        cantDisks++
+      } while (this.inBoard(X, Y) && board[X][Y].disk === this.diskOponent())
+      
+      if (cantDisks>1 && this.inBoard(X,Y) && board[X][Y].disk === this.props.currentPlayer) {
+        can = true
+      }
     })
+    return can
   }
 
   createBoard = () => {
@@ -80,7 +98,7 @@ class Board extends React.Component {
 const mapStateToProps = (state) => ({
   board: state.board,
   started: state.started,
-  turn: state.turn,
+  currentPlayer: state.currentPlayer,
   posWhite: state.posDisksWhite,
   posBlack: state.posDisksBlack
 });

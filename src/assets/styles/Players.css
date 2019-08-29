@@ -2,7 +2,7 @@
   margin: 0 auto;
 }
 
-.circleWhite {
+.circlewhite {
   height: 100px;
   width: 100px;
   background-color: white;
@@ -10,7 +10,7 @@
   border-radius: 50%;
 }
 
-.circleBlack {
+.circleblack {
   height: 100px;
   width: 100px;
   background-color: black;
