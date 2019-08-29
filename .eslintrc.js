@@ -21,5 +21,6 @@ module.exports = {
     'react',
   ],
   rules: {
+    "allowForLoopAfterthoughts": true
   },
 };

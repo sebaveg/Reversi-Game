@@ -5,22 +5,24 @@ import BoardLayout from '../components/Board';
 
 const Board = ({ rows, cols }) => {
   const createBoard = () => {
-    const virtualBoard = new Array(8).fill(0);
-    for (let i = 0; i < 8; i++) virtualBoard[i] = new Array(8).fill(0);
-    virtualBoard[3][3] = 1;
-    virtualBoard[4][4] = 1;
-    virtualBoard[3][4] = 2;
-    virtualBoard[4][3] = 2;
-    return virtualBoard;
+    const board = cols
+    for (let i = 0; i < 8; i += 1) board[i] = rows.map((row) => row + board[i])
+    return board;
   };
 
-  const virtualBoard = createBoard();
+  const initialBoard = (board) => {
+    board[3][3] = 'B'; // Black
+    board[4][4] = 'B'; // Black
+    board[3][4] = 'W'; // White
+    board[4][3] = 'W'; // White
+  }
+
+  const board = createBoard();
+  initialBoard(board)
 
   return (
     <BoardLayout
-      cols={cols}
-      rows={rows}
-      board={virtualBoard}
+      board={board}
     />
   );
 };

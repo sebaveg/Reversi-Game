@@ -7,13 +7,17 @@ import Score from '../components/Score';
 import '../assets/styles/Game.css';
 
 class GameScreen extends Component {
+  constructor() {
+    super()
+  }
   render() {
+    const { playerOne, playerTwo, turn } = this.props;
     return (
       <>
         <div className="wrapperResponsive">
-          <Score player={this.props.playerOne.name} color={this.props.playerOne.colorDisk} />
+          <Score player={playerOne.name} color={playerOne.colorDisk} turn={turn} />
           <Board />
-          <Score player={this.props.playerTwo.name} color={this.props.playerTwo.colorDisk} />
+          <Score player={playerTwo.name} color={playerTwo.colorDisk} turn={turn} />
         </div>
       </>
     );
@@ -23,6 +27,7 @@ class GameScreen extends Component {
 const mapStateToProps = (state) => ({
   playerOne: state.playerOne,
   playerTwo: state.playerTwo,
+  turn: state.turn,
 });
 
 export default connect(mapStateToProps, null)(GameScreen);

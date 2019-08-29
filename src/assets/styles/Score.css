@@ -17,3 +17,9 @@
   margin: 0 auto;
   border-radius: 50%;
 }
+
+.light {
+  background-color: white;
+  color: green;
+  padding: 5px 10px;
+}
