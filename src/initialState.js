@@ -1,9 +1,7 @@
 export const initialState = {
   error: '',
-  board: {
-    rows: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-    cols: ['1', '2', '3', '4', '5', '6', '7', '8']
-  },
+  started: false,
+  board: [], // Array 2D
   playerOne: {
     name: '',
     colorDisk: '',

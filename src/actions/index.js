@@ -6,6 +6,14 @@ export const setColorPlayers = (payload) => ({
   type: 'SET_COLOR_PLAYERS',
   payload,
 });
+export const setStarted = (payload) => ({
+  type: 'STARTED',
+  payload
+})
+export const setBoard = (payload) => ({
+  type: 'SET_BOARD',
+  payload
+})
 export const setWinner = (payload) => ({
   type: 'SET_WINNER',
   payload,
