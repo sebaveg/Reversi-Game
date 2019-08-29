@@ -14,9 +14,27 @@ const directions = [
   [-1, -1], // diagonal - up left
 ]
 
-const Board = ({ posWhite, posBlack, setBoard }) => {
+class Board extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(props)
+    const { setBoard, setStarted } = props
+    setStarted() // dispatch action
+    setBoard(this.initialBoard())
+  }
+  
+  componentDidMount() {
+  }
 
-  const createBoard = () => {
+  render() {
+    return (
+      <BoardLayout
+        board={this.props.board}
+      />
+    );
+  }
+
+  createBoard = () => {
     const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
     const cols = ['1', '2', '3', '4', '5', '6', '7', '8']
     const board = cols.slice()
@@ -27,28 +45,20 @@ const Board = ({ posWhite, posBlack, setBoard }) => {
     return board
   }
 
-  const initialBoard = (board) => {
-    posWhite.forEach((pos) => {
+  initialBoard = () => {
+    const board = this.createBoard()
+    this.props.posWhite.forEach((pos) => {
       board[pos[0]][pos[1]].disk = 'white' // White
     })
-    posBlack.forEach((pos) => {
+    this.props.posBlack.forEach((pos) => {
       board[pos[0]][pos[1]].disk = 'black' // Black
     })
     return board
   };
-
-  const initBoard = initialBoard(createBoard())  
-  setStarted()
-  setBoard(initBoard)
-
-  return (
-    <BoardLayout
-      board={initBoard}
-    />
-  );
 };
 
 const mapStateToProps = (state) => ({
+  board: state.board,
   started: state.started,
   posWhite: state.posDisksWhite,
   posBlack: state.posDisksBlack
