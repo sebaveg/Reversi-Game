@@ -1,3 +1,7 @@
+.cell {
+  border: 2px solid green;
+}
+
 .black, .white {
   height: 45px;
   width: 45px;

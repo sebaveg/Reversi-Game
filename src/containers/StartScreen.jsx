@@ -37,11 +37,11 @@ const StartScreen = (props) => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <h2>Player one</h2>
-          <input type="text" name="namePlayerOne" placeholder="Insert name for player one" onChange={handleInput} />
+          <input type="text" name="namePlayerOne" placeholder="Insert name for player one" maxLength="25" onChange={handleInput} />
         </div>
         <div className="form-group">
           <h2>Player two</h2>
-          <input type="text" name="namePlayerTwo" placeholder="Insert name for player one" onChange={handleInput} />
+          <input type="text" name="namePlayerTwo" placeholder="Insert name for player one" maxLength="25" onChange={handleInput} />
         </div>
         <button type="submit" className="button">
           Start Game
