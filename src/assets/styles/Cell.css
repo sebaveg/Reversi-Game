@@ -8,6 +8,13 @@
 .cell:hover {
   color: white;
 }
+.highlight {
+  border: 1px solid yellow;
+  color: yellow;
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+}
 .black, .white {
   height: 45px;
   width: 45px;
