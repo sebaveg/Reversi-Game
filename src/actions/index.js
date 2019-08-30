@@ -14,6 +14,18 @@ export const setBoard = (payload) => ({
   type: 'SET_BOARD',
   payload
 })
+export const changeTurn = (payload) => ({
+  type: 'CHANGE_TURN',
+  payload
+})
+export const setPosDisksWhite = (payload) => ({
+  type: 'SET_POSITION_DISK_WHITE',
+  payload
+})
+export const setPosDisksBlack = (payload) => ({
+  type: 'SET_POSITION_DISK_BLACK',
+  payload
+})
 export const setWinner = (payload) => ({
   type: 'SET_WINNER',
   payload,

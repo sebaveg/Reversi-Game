@@ -23,3 +23,9 @@
   color: green;
   padding: 5px 10px;
 }
+
+.dark {
+  background-color: green;
+  color: white;
+  padding: 5px 10px;
+}

@@ -8,7 +8,7 @@ import '../assets/styles/Game.css';
 
 class GameScreen extends Component {
   render() {
-    const { playerOne, playerTwo, currentPlayer } = this.props;
+    const { playerOne, playerTwo, currentPlayer, error } = this.props;
     return (
       <>
         <div className="wrapperResponsive">
@@ -16,12 +16,14 @@ class GameScreen extends Component {
           <Board />
           <Players player={playerTwo.name} color={playerTwo.colorDisk} currentPlayer={currentPlayer} />
         </div>
+        <p>{error}</p>
       </>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
+  error: state.error,
   playerOne: state.playerOne,
   playerTwo: state.playerTwo,
   currentPlayer: state.currentPlayer,

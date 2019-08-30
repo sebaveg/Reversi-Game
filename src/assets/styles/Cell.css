@@ -30,3 +30,19 @@
 .white {
   background-color: white;
 }
+
+@media (max-width: 520px) {
+  .cell {
+    height: 35px;
+    width: 35px;
+  }
+  .highlight {
+    height: 35px;
+    width: 35px;
+  }
+  .black,
+  .white {
+    height: 25px;
+    width: 25px;
+  }
+}

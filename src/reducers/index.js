@@ -27,12 +27,27 @@ const reducer = (state, action) => {
     case 'STARTED':
       return {
         ...state,
-        start: true
+        started: true
       }
     case 'SET_BOARD':
       return {
         ...state,
         board: action.payload
+      }
+    case 'CHANGE_TURN':
+      return {
+        ...state,
+        currentPlayer: action.payload === 'white' ? 'black' : 'white'
+      }
+    case 'SET_POSITION_DISK_WHITE':
+      return {
+        ...state,
+        posDiskWhite: state.posDisksWhite.push(action.payload)
+      }
+    case 'SET_POSITION_DISK_BLACK':
+      return {
+        ...state,
+        posDiskBlack: state.posDisksBlack.push(action.payload)
       }
     case 'SET_ERROR':
       return {

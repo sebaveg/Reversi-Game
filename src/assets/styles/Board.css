@@ -1,10 +1,8 @@
-.wrapperBoard {
-  margin: 0 auto;
-}
 
 .Board {
   background-color: #8756ca;
   border: 3px solid white;
   box-shadow: 0 0 15px -5px #fff;
-  margin: 1em;
+  margin-top: 1em;
+  min-width: 280px;
 }

@@ -1,7 +1,13 @@
 export const initialState = {
   error: '',
   started: false,
-  board: [], // Array 2D
+  board: [[ // Array 2D
+    {
+      id: '',
+      disk: null,
+      allowedCell: ''
+    }
+  ]],
   playerOne: {
     name: '',
     colorDisk: '',
@@ -10,16 +16,15 @@ export const initialState = {
     name: '',
     colorDisk: '',
   },
-  posDisksWhite: [
+  posDisksWhite: [ // Position (x,y) of white disks
     [3, 3],
     [4, 4],
   ],
-  posDisksBlack: [
+  posDisksBlack: [ // Position (x,y) of black disks
     [3, 4],
     [4, 3]
   ],
   currentPlayer: 'black', // or white
   winner: '',
-  lostTurn: null
 };
 
