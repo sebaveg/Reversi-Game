@@ -37,7 +37,7 @@ const reducer = (state, action) => {
     case 'CHANGE_TURN':
       return {
         ...state,
-        currentPlayer: action.payload === 'white' ? 'black' : 'white'
+        currentPlayer: state.currentPlayer === 'white' ? 'black' : 'white'
       }
     case 'SET_POSITION_DISK_WHITE':
       return {

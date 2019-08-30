@@ -23,11 +23,11 @@ class Board extends React.Component {
   
   async componentDidMount() {
     await this.props.setBoard(this.initialBoard()) // dispatch action
-    await this.props.setBoard(this.allowedCells()) // dispatch action
+    this.props.setBoard(this.allowedCells()) // dispatch action
   }
   
   componentDidUpdate() {
-    console.log('ComponentDidUPDATE')
+    // this.props.setBoard(this.allowedCells()) // dispatch action
   }
   
   render() {
@@ -45,7 +45,7 @@ class Board extends React.Component {
     for (let i = 0; i < 8; i += 1) board[i] = rows.map((row) => ({
       id: row + board[i],
       disk: null, // white or black
-      allowedCell: false // says if enable or disable click
+      allowedCell: false // says if enable or disable click for put disk
     }))
     return board
   }
@@ -70,7 +70,7 @@ class Board extends React.Component {
         board[x][y].allowedCell = this.canPutDisk(x,y)
       }
     }
-    return board  
+    return board
   }
   
   canPutDisk(x, y) {
