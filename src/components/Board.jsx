@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Cell from './Cell';
+import Cell from '../containers/Cell';
 
 import '../assets/styles/Board.css';
 
