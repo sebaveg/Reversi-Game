@@ -23,7 +23,7 @@ class Board extends React.Component {
   
   async componentDidMount() {
     await this.props.setBoard(this.initialBoard()) // dispatch action
-    this.props.setBoard(this.allowedCells()) // dispatch action
+    // this.props.setBoard(this.allowedCells()) // dispatch action
   }
   
   componentDidUpdate() {
