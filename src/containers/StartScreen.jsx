@@ -1,4 +1,4 @@
-// This screen user hooks
+// Only this screen use hooks
 
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
@@ -12,13 +12,10 @@ const StartScreen = (props) => {
     namePlayerTwo: 'Player two',
   });
 
-  const randomColorDisk = () => {
-    // get value between 0 and 1. If value > 0.5 is 50% probability
-    const colorDisk = Math.random() > 0.5 ? 'white' : 'black';
-    return colorDisk;
-  };
+  // get value between 0 and 1. If value > 0.5 is 50% probability
+  const randomColorDisk = () => (Math.random() > 0.5 ? 'white' : 'black');
 
-  // Every change on input update the state
+  // Every change on input update the local state of this component
   const handleInput = (event) => {
     setPlayers({
       ...players,

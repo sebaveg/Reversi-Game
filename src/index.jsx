@@ -8,7 +8,7 @@ import reducers from './reducers';
 
 import App from './routes/App';
 
-import './index.css';
+import './assets/styles/index.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, initialState, composeEnhancers());
