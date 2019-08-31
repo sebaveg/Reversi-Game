@@ -6,6 +6,7 @@ import {
   CHANGE_TURN,
   SET_POSITION_DISK_BLACK,
   SET_POSITION_DISK_WHITE,
+  ADD_DISKS,
   SET_WINNER,
   SET_ERROR,
 } from '../types/index';
@@ -35,6 +36,10 @@ export const setPosDisksWhite = (payload) => ({
 });
 export const setPosDisksBlack = (payload) => ({
   type: SET_POSITION_DISK_BLACK,
+  payload,
+});
+export const addDisks = (payload) => ({
+  type: ADD_DISKS,
   payload,
 });
 export const setWinner = (payload) => ({

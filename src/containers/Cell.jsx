@@ -5,7 +5,8 @@ import {
   setBoard,
   changeTurn,
   setPosDisksWhite,
-  setPosDisksBlack
+  setPosDisksBlack,
+  addDisks
 } from '../actions'
 
 import '../assets/styles/Cell.css';
@@ -66,7 +67,8 @@ class Cell extends Component {
       } while (this.inBoard(X, Y) && board[X][Y].disk === this.diskOponent())
 
       if (cantDisks > 1 && this.inBoard(X, Y) && board[X][Y].disk === this.props.currentPlayer) {
-        cells.forEach(cell=>board[cell[0]][cell[1]].disk=this.props.currentPlayer)
+        cells.forEach(cell => board[cell[0]][cell[1]].disk = this.props.currentPlayer)
+        this.props.addDisks(cantDisks)
       }
     })
     return board
@@ -87,7 +89,8 @@ const mapDispatchToProps = {
   setBoard,
   changeTurn,
   setPosDisksWhite,
-  setPosDisksBlack
+  setPosDisksBlack,
+  addDisks
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cell);

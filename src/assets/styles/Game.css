@@ -1,6 +1,12 @@
+.error {
+  background-color: antiquewhite;
+  color: red;
+  padding: 5px 25px;
+}
+
 .flexContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
   width: 100%;
   max-width: 1200px;
@@ -9,19 +15,22 @@
 
 .flexItem:nth-of-type(1) {
   order: 1;
+  width: 200px;
 }
 .flexItem:nth-of-type(2) {
   order: 2;
 }
 .flexItem:nth-of-type(3) {
   order: 3;
+  width: 200px;
+}
+
+.title {
+  border-bottom: 1px solid #fff;
+  margin: 1em 0 0 0;
 }
 
 @media (max-width: 910px) {
-  .flexContainer {
-    align-items: flex-start;
-    
-  }
   .flexItem:nth-of-type(1) {
     order: 2;
   }

@@ -19,18 +19,20 @@ class Game extends Component {
     } = this.props;
     return (
       <>
-        <p>{error}</p>
+        {error ? <p className="error">{error}</p> : null}
         <div className="flexContainer">
           <div className="flexItem">
-            <Players player={playerOne.name} color={playerOne.colorDisk} currentPlayer={currentPlayer} />
+            <Players name={playerOne.name} color={playerOne.colorDisk} total={playerOne.totalDisks} currentPlayer={currentPlayer} />
           </div>
           <div className="flexItem">
             <Board />
           </div>
           <div className="flexItem">
-            <Players player={playerTwo.name} color={playerTwo.colorDisk} currentPlayer={currentPlayer} />
+            <Players name={playerTwo.name} color={playerTwo.colorDisk} total={playerTwo.totalDisks} currentPlayer={currentPlayer} />
           </div>
         </div>
+        <h2 className="title">Movement history</h2>
+        <p>asljklsjgkasjglajslgjkasklgjaskljgklajsgklajslgkjasgñasjgklñj</p>
       </>
     );
   }

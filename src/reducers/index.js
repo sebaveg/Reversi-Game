@@ -6,6 +6,7 @@ import {
   CHANGE_TURN,
   SET_POSITION_DISK_BLACK,
   SET_POSITION_DISK_WHITE,
+  ADD_DISKS,
   SET_WINNER,
   SET_ERROR,
 } from '../types/index';
@@ -61,6 +62,32 @@ const reducer = (state, action) => {
       return {
         ...state,
       };
+    case ADD_DISKS:
+      if (state.currentPlayer === state.playerOne.colorDisk) {
+        return {
+          ...state,
+          playerOne: {
+            ...state.playerOne,
+            totalDisks: state.playerOne.totalDisks + action.payload,
+          },
+          playerTwo: {
+            ...state.playerTwo,
+            totalDisks: state.playerTwo.totalDisks - action.payload + 1,
+          },
+        };
+      }
+      return {
+        ...state,
+        playerTwo: {
+          ...state.playerTwo,
+          totalDisks: state.playerTwo.totalDisks + action.payload,
+        },
+        playerOne: {
+          ...state.playerOne,
+          totalDisks: state.playerOne.totalDisks - action.payload + 1,
+        },
+      };
+
     case SET_WINNER:
       return {
         ...state,
