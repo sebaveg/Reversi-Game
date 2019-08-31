@@ -1,7 +1,9 @@
-export const SET_NAME_PLAYERS = 'set_name_players'
-export const SET_COLOR_PLAYERS = 'set_color_players'
-export const STARTED = 'started'
-export const CHANGE_TURN = 'change_turn'
-export const SET_POSITON_DISK_BLACK = 'set_position_disk_black'
-export const SET_POSITON_DISK_WHITE = 'set_position_disk_white'
-export const SET_ERROR = 'set_error'
+export const SET_NAME_PLAYERS = 'set_name_players';
+export const SET_COLOR_PLAYERS = 'set_color_players';
+export const SET_BOARD = 'set_board';
+export const STARTED = 'started';
+export const CHANGE_TURN = 'change_turn';
+export const SET_POSITION_DISK_BLACK = 'set_position_disk_black';
+export const SET_POSITION_DISK_WHITE = 'set_position_disk_white';
+export const SET_WINNER = 'set_winner';
+export const SET_ERROR = 'set_error';

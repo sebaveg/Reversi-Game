@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 
 import StartScreen from '../containers/StartScreen';
 import Game from '../containers/Game';
-import NotFound from '../containers/NotFound';
+import NotFound from '../components/NotFound';
 
 const App = () => (
   <BrowserRouter>

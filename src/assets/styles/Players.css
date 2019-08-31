@@ -29,3 +29,17 @@
   color: white;
   padding: 5px 10px;
 }
+
+@media (max-width: 720px) {
+  .circleblack, .circlewhite{
+    height: 70px;
+    width: 70px;
+  }
+}
+
+@media (max-width: 520px) {
+  .circleblack, .circlewhite{
+    height: 40px;
+    width: 40px;
+  }
+}

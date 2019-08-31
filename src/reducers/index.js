@@ -1,4 +1,14 @@
-import { SET_NAME_PLAYERS, SET_COLOR_PLAYERS, STARTED, CHANGE_TURN, SET_POSITION_DISK_BLACK, SET_POSITION_DISK_WHITE, SET_ERROR } from '../types/index'
+import {
+  SET_NAME_PLAYERS,
+  SET_COLOR_PLAYERS,
+  SET_BOARD,
+  STARTED,
+  CHANGE_TURN,
+  SET_POSITION_DISK_BLACK,
+  SET_POSITION_DISK_WHITE,
+  SET_WINNER,
+  SET_ERROR,
+} from '../types/index';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -29,28 +39,33 @@ const reducer = (state, action) => {
     case STARTED:
       return {
         ...state,
-        started: true
-      }
+        started: true,
+      };
     case SET_BOARD:
       return {
         ...state,
-        board: action.payload
-      }
+        board: action.payload,
+      };
     case CHANGE_TURN:
       return {
         ...state,
-        currentPlayer: state.currentPlayer === 'white' ? 'black' : 'white'
-      }
+        currentPlayer: state.currentPlayer === 'white' ? 'black' : 'white',
+      };
     case SET_POSITION_DISK_WHITE:
+      state.posDisksWhite.push(action.payload);
       return {
         ...state,
-        posDiskWhite: state.posDisksWhite.push(action.payload)
-      }
+      };
     case SET_POSITION_DISK_BLACK:
+      state.posDisksBlack.push(action.payload);
       return {
         ...state,
-        posDiskBlack: state.posDisksBlack.push(action.payload)
-      }
+      };
+    case SET_WINNER:
+      return {
+        ...state,
+        winner: action.payload,
+      };
     case SET_ERROR:
       return {
         ...state,

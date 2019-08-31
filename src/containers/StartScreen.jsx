@@ -1,3 +1,5 @@
+// This screen user hooks
+
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setNamePlayers, setColorPlayers } from '../actions';

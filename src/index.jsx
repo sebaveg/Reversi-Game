@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
-import { initialState } from './initialState'
+import initialState from './initialState';
 import reducers from './reducers';
 
 import App from './routes/App';

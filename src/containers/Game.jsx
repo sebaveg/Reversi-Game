@@ -1,20 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setStarted } from '../actions';
 
 import Board from './Board';
 import Players from '../components/Players';
 
 import '../assets/styles/Game.css';
 
-class GameScreen extends Component {
+class Game extends Component {
+  constructor(props) {
+    super(props);
+    this.props.setStarted(); // dispatch action
+  }
+
   render() {
-    const { playerOne, playerTwo, currentPlayer, error } = this.props;
+    const {
+      playerOne, playerTwo, currentPlayer, error,
+    } = this.props;
     return (
       <>
-        <div className="wrapperResponsive">
-          <Players player={playerOne.name} color={playerOne.colorDisk} currentPlayer={currentPlayer} />
-          <Board />
-          <Players player={playerTwo.name} color={playerTwo.colorDisk} currentPlayer={currentPlayer} />
+        <div className="flexContainer">
+          <div className="flexItem">
+            <Players player={playerOne.name} color={playerOne.colorDisk} currentPlayer={currentPlayer} />
+          </div>
+          <div className="flexItem">
+            <Board />
+          </div>
+          <div className="flexItem">
+            <Players player={playerTwo.name} color={playerTwo.colorDisk} currentPlayer={currentPlayer} />
+          </div>
         </div>
         <p>{error}</p>
       </>
@@ -29,4 +43,8 @@ const mapStateToProps = (state) => ({
   currentPlayer: state.currentPlayer,
 });
 
-export default connect(mapStateToProps, null)(GameScreen);
+const mapDispatchToProps = {
+  setStarted,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

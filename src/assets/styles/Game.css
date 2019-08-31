@@ -1,8 +1,34 @@
-.wrapperResponsive {
+.flexContainer {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
   max-width: 1200px;
   flex-wrap: wrap;
+}
+
+.flexItem:nth-of-type(1) {
+  order: 1;
+}
+.flexItem:nth-of-type(2) {
+  order: 2;
+}
+.flexItem:nth-of-type(3) {
+  order: 3;
+}
+
+@media (max-width: 910px) {
+  .flexContainer {
+    align-items: flex-start;
+    
+  }
+  .flexItem:nth-of-type(1) {
+    order: 2;
+  }
+  .flexItem:nth-of-type(2) {
+    order: 1;
+  }
+  .flexItem:nth-of-type(3) {
+    order: 3;
+  }
 }

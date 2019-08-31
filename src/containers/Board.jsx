@@ -16,18 +16,13 @@ const directions = [
 ]
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props)
-    this.props.setStarted() // dispatch action
-  }
   
-  async componentDidMount() {
-    await this.props.setBoard(this.initialBoard()) // dispatch action
-    // this.props.setBoard(this.allowedCells()) // dispatch action
+  componentDidMount() {
+    this.initialBoard() // dispatch action
   }
   
   componentDidUpdate() {
-    // this.props.setBoard(this.allowedCells()) // dispatch action
+    this.allowedCells() // dispatch action
   }
   
   render() {
@@ -38,7 +33,7 @@ class Board extends React.Component {
     );
   }
 
-  createBoard = () => {
+  createBoard() {
     const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
     const cols = ['1', '2', '3', '4', '5', '6', '7', '8']
     const board = cols.slice()
@@ -50,21 +45,25 @@ class Board extends React.Component {
     return board
   }
 
-  initialBoard = () => {
+  async initialBoard() {
     // Set initial disks: two white and two black in center
-    const board = this.createBoard()
+    console.log('initialBoard')
+    let board = this.createBoard()
     this.props.posWhite.forEach((pos) => {
       board[pos[0]][pos[1]].disk = 'white' // White
     })
     this.props.posBlack.forEach((pos) => {
       board[pos[0]][pos[1]].disk = 'black' // Black
     })
-    return board
+    await this.props.setBoard(board)
+    board = this.allowedCells()
+    this.props.setBoard(board)
   };
 
   allowedCells() {
     // says what cells are enable for clicks
-    const board = this.props.board.slice()
+    let board = this.props.board.slice()
+    console.log(board)
     for (let x = 0; x < 8; x++){
       for (let y = 0; y < 8; y++){
         board[x][y].allowedCell = this.canPutDisk(x,y)

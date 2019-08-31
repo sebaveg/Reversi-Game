@@ -1,12 +1,12 @@
-export const initialState = {
+export default {
   error: '',
   started: false,
   board: [[ // Array 2D
     {
       id: '',
       disk: null,
-      allowedCell: ''
-    }
+      allowedCell: '',
+    },
   ]],
   playerOne: {
     name: '',
@@ -22,9 +22,8 @@ export const initialState = {
   ],
   posDisksBlack: [ // Position (x,y) of black disks
     [3, 4],
-    [4, 3]
+    [4, 3],
   ],
   currentPlayer: 'black', // or white
   winner: '',
 };
-

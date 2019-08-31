@@ -25,6 +25,7 @@ class Cell extends Component {
   render() {
     const { disk, allowed, children } = this.props
     return (
+      //if disk show it else show id cell
       <td className={allowed ? 'highlight' : 'cell'} onClick={this.handleClick.bind(this)}>
         {disk !== 'black' && disk !== 'white' ? children : null}
         <div className={`${disk}` === 'black' ? 'black' : `${disk}` === 'white' ? 'white' : ''} />
@@ -32,17 +33,16 @@ class Cell extends Component {
     )
   }
   
-  handleClick() {
+  async handleClick() {
     if (this.props.allowed) {
+      let board = this.props.board.slice()
       const x = this.props.position[0]
       const y = this.props.position[1]
-      let board = this.props.board.slice()
-      const {currentPlayer} = this.props
-      board[x][y].disk = currentPlayer
-      currentPlayer === 'white' ? this.props.setPosDisksWhite([x, y]) : this.props.setPosDisksBlack([x, y])
-      this.reverse(x,y)
-      this.props.setBoard(board)
-      this.props.changeTurn(this.props.currentPlayer)
+      this.props.currentPlayer === 'black' ? this.props.setPosDisksBlack([x, y]) : this.props.setPosDisksWhite([x, y]) // save position disks in the global state
+      board[x][y].disk = this.props.currentPlayer
+      board = this.reverse(x,y)
+      await this.props.changeTurn()
+      await this.props.setBoard(board)
     }
     else {
       this.props.setError('No can put your disk here')      
@@ -50,7 +50,7 @@ class Cell extends Component {
   }
 
   reverse(x, y) {
-    // boolean if can put one disk in the cell in (x,y)
+    // reverse disks oponent
     const board = this.props.board.slice()
     let X, Y, cantDisks, cells
     directions.forEach(direction => {
@@ -72,7 +72,7 @@ class Cell extends Component {
     return board
   }
 
-  diskOponent = () => this.props.currentPlayer === 'white' ? 'black' : 'white'
+  diskOponent =   () => this.props.currentPlayer === 'white' ? 'black' : 'white'
   inBoard = (x, y) => x >= 0 && x < 8 && y >= 0 && y < 8
 
 }
