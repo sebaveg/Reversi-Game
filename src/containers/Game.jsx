@@ -19,6 +19,7 @@ class Game extends Component {
     } = this.props;
     return (
       <>
+        <p>{error}</p>
         <div className="flexContainer">
           <div className="flexItem">
             <Players player={playerOne.name} color={playerOne.colorDisk} currentPlayer={currentPlayer} />
@@ -30,7 +31,6 @@ class Game extends Component {
             <Players player={playerTwo.name} color={playerTwo.colorDisk} currentPlayer={currentPlayer} />
           </div>
         </div>
-        <p>{error}</p>
       </>
     );
   }
