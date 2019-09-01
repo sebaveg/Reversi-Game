@@ -10,6 +10,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -22,7 +23,9 @@ module.exports = {
   ],
   rules: {
     "allowForLoopAfterthoughts": 0,
+    'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+    "react/destructuring-assignment": [0, "always", {"ignoreClassFields": 0 }],
     "react/prop-types": [
       0,
       { "ignore": "ignore", "customValidators": "customValidator" }

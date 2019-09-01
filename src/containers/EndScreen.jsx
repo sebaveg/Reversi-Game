@@ -6,5 +6,4 @@ class EndScreen extends Component {
   }
 }
 
-export default EndScreen
-;
+export default EndScreen;

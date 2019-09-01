@@ -10,7 +10,7 @@ import '../assets/styles/Game.css';
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.props.setStarted(); // dispatch action
+    props.setStarted(); // dispatch action
   }
 
   render() {
@@ -22,13 +22,23 @@ class Game extends Component {
         {error ? <p className="error">{error}</p> : null}
         <div className="flexContainer">
           <div className="flexItem">
-            <Players name={playerOne.name} color={playerOne.colorDisk} total={playerOne.totalDisks} currentPlayer={currentPlayer} />
+            <Players
+              name={playerOne.name}
+              color={playerOne.colorDisk}
+              total={playerOne.totalDisks}
+              currentPlayer={currentPlayer}
+            />
           </div>
           <div className="flexItem">
             <Board />
           </div>
           <div className="flexItem">
-            <Players name={playerTwo.name} color={playerTwo.colorDisk} total={playerTwo.totalDisks} currentPlayer={currentPlayer} />
+            <Players
+              name={playerTwo.name}
+              color={playerTwo.colorDisk}
+              total={playerTwo.totalDisks}
+              currentPlayer={currentPlayer}
+            />
           </div>
         </div>
         <h2 className="title">Movement history</h2>
