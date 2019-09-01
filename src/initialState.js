@@ -1,13 +1,7 @@
 export default {
   error: '',
   started: false,
-  board: [[ // Array 2D
-    {
-      id: '',
-      disk: null,
-      allowedCell: '',
-    },
-  ]],
+  board: [], // Array 2D
   playerOne: {
     name: '',
     colorDisk: '',

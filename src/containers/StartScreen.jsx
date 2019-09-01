@@ -1,11 +1,10 @@
-// Only this screen use hooks
-
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setNamePlayers, setColorPlayers } from '../actions';
 
 import '../assets/styles/StartScreen.css';
 
+// Only this screen use hooks
 const StartScreen = (props) => {
   const [players, setPlayers] = useState({
     namePlayerOne: 'Player one',
@@ -32,7 +31,7 @@ const StartScreen = (props) => {
 
   return (
     <section className="formWrapper">
-      <h4>Enter the name of the players</h4>
+      <h5>Enter the name of the players</h5>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <h2>Player one</h2>
@@ -42,9 +41,7 @@ const StartScreen = (props) => {
           <h2>Player two</h2>
           <input type="text" name="namePlayerTwo" placeholder="Insert name for player one" maxLength="25" onChange={handleInput} />
         </div>
-        <button type="submit" className="button">
-          Start Game
-        </button>
+        <button type="submit" className="button">Start</button>
       </form>
     </section>
   );

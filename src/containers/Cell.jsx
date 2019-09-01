@@ -24,6 +24,8 @@ const directions = [
 
 class Cell extends Component {
   render() {
+    console.log('props')
+    console.log(this.props)
     const { disk, allowed, children } = this.props
     return (
       //if disk show it else show id cell
@@ -46,7 +48,10 @@ class Cell extends Component {
       await this.props.setBoard(board)
     }
     else {
-      this.props.setError('No can put your disk here')      
+      this.props.setError('No can put your disk here')
+      setTimeout(() => {
+        this.props.setError('')
+      },2000)
     }
   }
 
@@ -74,7 +79,7 @@ class Cell extends Component {
     return board
   }
 
-  diskOponent =   () => this.props.currentPlayer === 'white' ? 'black' : 'white'
+  diskOponent = () => this.props.currentPlayer === 'white' ? 'black' : 'white'
   inBoard = (x, y) => x >= 0 && x < 8 && y >= 0 && y < 8
 
 }

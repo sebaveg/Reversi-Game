@@ -6,6 +6,7 @@ import '../assets/styles/Players.css';
 
 const Players = (props) => {
   const handleClick = () => props.changeTurn();
+
   const {
     name, color, total, currentPlayer,
   } = props;

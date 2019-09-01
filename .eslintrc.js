@@ -22,6 +22,10 @@ module.exports = {
   ],
   rules: {
     "allowForLoopAfterthoughts": 0,
-    "react/prefer-stateless-function": [0, {"ignorePureComponents": true }]
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+    "react/prop-types": [
+      0,
+      { "ignore": "ignore", "customValidators": "customValidator" }
+    ]
   },
 };

@@ -9,8 +9,8 @@
   text-align: center;
 }
 
-.formWrapper form {
-  display: grid;
+.formWrapper h5 {
+  margin: 3rem 0;
 }
 
 .formWrapper form h2 {
@@ -21,20 +21,26 @@
   font-size: 1.5rem;
   padding: 10px 15px;
   min-width: 300px;
+  text-align: center;
+}
+
+.form-group {
   margin-bottom: 3rem;
 }
 
 .button {
   background-color: green;
   border: 1px solid green;
+  border-radius: 5px;
   box-shadow: 0 0 10px -3px white;
   color: white;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding: 10px 0;
   text-shadow: 1px 0 #282c34;
+  width: 100%;
 }
 
 .button:hover {
