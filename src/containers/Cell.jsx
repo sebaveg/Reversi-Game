@@ -9,6 +9,8 @@ import {
   addDisks,
 } from '../actions';
 
+import CellLayout from '../components/Cell';
+
 import '../assets/styles/Cell.css';
 
 const directions = [
@@ -81,15 +83,7 @@ class Cell extends Component {
   render() {
     const { disk, allowed, children } = this.props;
     return (
-      // if disk show it else show id cell
-      <td
-        className={allowed ? 'highlight' : 'cell'}
-        onClick={this.handleClick.bind(this)}
-        role="lala"
-      >
-        {disk !== 'black' && disk !== 'white' ? children : null}
-        <div className={`${disk}` === 'black' ? 'black' : `${disk}` === 'white' ? 'white' : ''} />
-      </td>
+      <CellLayout disk={disk} allowed={allowed}>{children}</CellLayout>
     );
   }
 }
