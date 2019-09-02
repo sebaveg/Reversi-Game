@@ -26,6 +26,7 @@ module.exports = {
     'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
     "react/destructuring-assignment": [0, "always", { "ignoreClassFields": 0 }],
+    "react/no-array-index-key": 0,
     "react/jsx-no-bind": 0,
     "react/prop-types": [
       0,
