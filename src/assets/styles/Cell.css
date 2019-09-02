@@ -2,8 +2,8 @@
   border: 1px solid white;
   color: rgba(255, 255, 255, .2);
   cursor: pointer;
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
 }
 .cell:hover {
   color: white;
@@ -12,12 +12,12 @@
   border: 1px solid yellow;
   color: yellow;
   cursor: pointer;
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
 }
 .black, .white {
-  height: 45px;
-  width: 45px;
+  height: 60px;
+  width: 60px;
   border: 2px solid grey;
   border-radius: 50%;
   margin: 0 auto;
@@ -29,6 +29,24 @@
 
 .white {
   background-color: white;
+}
+
+@media (max-width: 1020px) {
+  .cell {
+    height: 60px;
+    width: 60px;
+  }
+
+  .highlight {
+    height: 60px;
+    width: 60px;
+  }
+
+  .black,
+  .white {
+    height: 45px;
+    width: 45px;
+  }
 }
 
 @media (max-width: 720px) {

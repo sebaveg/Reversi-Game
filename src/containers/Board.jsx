@@ -27,6 +27,8 @@ class Board extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log('board');
+    console.log(this.props.board);
     this.allowedCells(); // dispatch action
   }
 
@@ -97,10 +99,7 @@ class Board extends React.Component {
 
   render() {
     return (
-      <BoardLayout board={
-        this.props.board
-      }
-      />
+      <BoardLayout board={this.props.board} />
     );
   }
 }

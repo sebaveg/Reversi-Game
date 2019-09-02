@@ -4,7 +4,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Layout from '../components/Layout';
 
 import StartScreen from '../containers/StartScreen';
-import Game from '../containers/Game';
+import GameScreen from '../containers/GameScreen';
+import EndScreen from '../containers/EndScreen';
 import NotFound from '../components/NotFound';
 
 const App = () => (
@@ -12,7 +13,8 @@ const App = () => (
     <Layout>
       <Switch>
         <Route exact path="/" component={StartScreen} />
-        <Route exact path="/game" component={Game} />
+        <Route exact path="/game" component={GameScreen} />
+        <Route exact path="/end" component={EndScreen} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
