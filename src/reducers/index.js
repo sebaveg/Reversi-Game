@@ -69,29 +69,10 @@ const reducer = (state, action) => {
         ...state,
       };
     case ADD_DISKS:
-      if (state.currentPlayer === state.playerOne.colorDisk) {
-        return {
-          ...state,
-          playerOne: {
-            ...state.playerOne,
-            totalDisks: state.playerOne.totalDisks + action.payload,
-          },
-          playerTwo: {
-            ...state.playerTwo,
-            totalDisks: state.playerTwo.totalDisks - action.payload + 1,
-          },
-        };
-      }
       return {
         ...state,
-        playerTwo: {
-          ...state.playerTwo,
-          totalDisks: state.playerTwo.totalDisks + action.payload,
-        },
-        playerOne: {
-          ...state.playerOne,
-          totalDisks: state.playerOne.totalDisks - action.payload + 1,
-        },
+        disksWhite: action.payload.white,
+        disksBlack: action.payload.black,
       };
 
     case SET_WINNER:

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setBoard, setAllowedCells } from '../actions';
+import { setBoard, setAllowedCells, addDisks } from '../actions';
 
 import BoardLayout from '../components/Board';
 
@@ -28,7 +28,7 @@ class Board extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.currentPlayer !== prevProps.currentPlayer) {
-      this.allowedCells();
+      this.allowedCellsAndCountDisks();
     }
   }
 
@@ -58,22 +58,26 @@ class Board extends React.Component {
       board[pos[0]][pos[1]].disk = 'black'; // Black
     });
     await this.props.setBoard(board); // dispatch action
-    this.allowedCells();
+    this.allowedCellsAndCountDisks();
   }
 
   // says what cells are enable for clicks in current turn
-  allowedCells() {
+  allowedCellsAndCountDisks() {
     const b = this.props.board.slice();
-    let arrayCanReverse; let cant = 0;
+    let arrayCanReverse; let cantAllow = 0; let disksWhite = 0; let disksBlack = 0;
     for (let x = 0; x < 8; x++) {
       for (let y = 0; y < 8; y++) {
-        // array with positions enable for put disks
+        // array with positions enable for put disks)
         arrayCanReverse = this.canPutDisk(x, y);
         b[x][y].allowedCell = arrayCanReverse;
-        if (arrayCanReverse.length > 0) cant += 1;
+        if (arrayCanReverse.length > 0) cantAllow += 1;
+        // count disks
+        if (b[x][y].disk === 'white') disksWhite += 1;
+        if (b[x][y].disk === 'black') disksBlack += 1;
       }
     }
-    this.props.setAllowedCells(cant); // dispatch how many cells enable
+    this.props.setAllowedCells(cantAllow); // dispatch how many cells enable
+    this.props.addDisks({ white: disksWhite, black: disksBlack }); // dispatch how many disks for player
     this.props.setBoard(b);
   }
 
@@ -110,7 +114,7 @@ class Board extends React.Component {
 
   render() {
     return (
-      <BoardLayout board={this.props.board} onClickCell={this.allowedCells.bind(this)} />
+      <BoardLayout board={this.props.board} onClickCell={this.allowedCellsAndCountDisks.bind(this)} />
     );
   }
 }
@@ -125,6 +129,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setBoard,
   setAllowedCells,
+  addDisks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

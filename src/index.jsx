@@ -11,7 +11,7 @@ import App from './routes/App';
 import './assets/styles/index.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, initialState, composeEnhancers());
+const store = createStore(undoable(reducers), initialState, composeEnhancers());
 
 ReactDOM.render(
   <Provider store={store}>

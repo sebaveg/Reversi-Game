@@ -21,20 +21,21 @@ class Game extends Component {
   }
 
   winner() {
-    if (this.props.playerOne.totalDisks > this.props.playerTwo.totalDisks) {
-      this.props.setWinner(this.props.playerOne.name);
+    // This can do better
+    if (this.props.disksWhite > this.props.disksBlack) {
+      this.props.setWinner(this.props.playerOne.colorDisk === 'white' ? this.props.playerOne.name : this.props.playerTwo.name);
     }
-    if (this.props.playerOne.totalDisks < this.props.playerTwo.totalDisks) {
-      this.props.setWinner(this.props.playerTwo.name);
+    if (this.props.disksWhite < this.props.disksBlack) {
+      this.props.setWinner(this.props.playerOne.colorDisk === 'black' ? this.props.playerOne.name : this.props.playerTwo.name);
     }
-    if (this.props.playerOne.totalDisks === this.props.playerTwo.totalDisks) {
+    if (this.props.disksWhite === this.props.disksBlack) {
       this.props.setWinner('Draw');
     }
   }
 
   render() {
     const {
-      playerOne, playerTwo, error,
+      disksWhite, disksBlack, playerOne, playerTwo, error,
     } = this.props;
     return (
       <>
@@ -44,7 +45,7 @@ class Game extends Component {
             <Players
               name={playerOne.name}
               color={playerOne.colorDisk}
-              total={playerOne.totalDisks}
+              total={playerOne.colorDisk === 'black' ? disksBlack : disksWhite}
             />
           </div>
           <div className="flexItem">
@@ -54,7 +55,7 @@ class Game extends Component {
             <Players
               name={playerTwo.name}
               color={playerTwo.colorDisk}
-              total={playerTwo.totalDisks}
+              total={playerOne.colorDisk === 'white' ? disksWhite : disksBlack}
             />
           </div>
         </div>
@@ -70,6 +71,8 @@ const mapStateToProps = (state) => ({
   allowedCells: state.allowedCells,
   playerOne: state.playerOne,
   playerTwo: state.playerTwo,
+  disksWhite: state.disksWhite,
+  disksBlack: state.disksBlack,
 });
 
 const mapDispatchToProps = {

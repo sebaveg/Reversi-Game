@@ -6,7 +6,6 @@ import {
   changeTurn,
   setPosDisksWhite,
   setPosDisksBlack,
-  addDisks,
 } from '../actions';
 
 import CellLayout from '../components/Cell';
@@ -30,7 +29,6 @@ class Cell extends Component {
         board[cell.X][cell.Y].disk = this.props.currentPlayer;
       });
       this.props.changeTurn();
-      this.props.addDisks(this.props.allowed.length); // dispatch action
       this.props.setBoard(board);
       // save position disks in the global state
       if (this.props.currentPlayer === 'black') {
@@ -72,7 +70,6 @@ const mapDispatchToProps = {
   changeTurn,
   setPosDisksWhite,
   setPosDisksBlack,
-  addDisks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cell);
