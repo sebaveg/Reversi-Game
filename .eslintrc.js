@@ -25,7 +25,8 @@ module.exports = {
     "allowForLoopAfterthoughts": 0,
     'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
-    "react/destructuring-assignment": [0, "always", {"ignoreClassFields": 0 }],
+    "react/destructuring-assignment": [0, "always", { "ignoreClassFields": 0 }],
+    "react/jsx-no-bind": 0,
     "react/prop-types": [
       0,
       { "ignore": "ignore", "customValidators": "customValidator" }

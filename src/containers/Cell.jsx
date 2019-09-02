@@ -29,8 +29,8 @@ class Cell extends Component {
 
   inBoard = (x, y) => x >= 0 && x < 8 && y >= 0 && y < 8
 
+  // reverse disks oponent
   async reverse() {
-    // reverse disks oponent
     if (this.props.allowed) {
       const board = this.props.board.slice();
       const x = this.props.position[0];
@@ -45,6 +45,7 @@ class Cell extends Component {
       board[x][y].disk = this.props.currentPlayer;
       let X; let Y; let cantDisks;
       let cells;
+      // Reverse all disks in one direction
       directions.forEach((direction) => {
         cantDisks = 0;
         X = x;
@@ -56,7 +57,6 @@ class Cell extends Component {
           cells.push([X, Y]);
           cantDisks += 1;
         } while (this.inBoard(X, Y) && board[X][Y].disk === this.diskOponent());
-
         if (cantDisks > 1 && this.inBoard(X, Y) && board[X][Y].disk === this.props.currentPlayer) {
           cells.forEach((cell) => {
             board[cell[0]][cell[1]].disk = this.props.currentPlayer;
@@ -77,7 +77,13 @@ class Cell extends Component {
   render() {
     const { disk, allowed, children } = this.props;
     return (
-      <CellLayout disk={disk} allowed={allowed} onClick={this.reverse.bind(this)}>{children}</CellLayout>
+      <CellLayout
+        disk={disk}
+        allowed={allowed}
+        onClick={this.reverse.bind(this)}
+      >
+        {children}
+      </CellLayout>
     );
   }
 }
