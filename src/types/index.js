@@ -1,6 +1,7 @@
 export const SET_NAME_PLAYERS = 'set_name_players';
 export const SET_COLOR_PLAYERS = 'set_color_players';
 export const SET_BOARD = 'set_board';
+export const SET_ALLOWED_CELLS = 'set_allowed_cells';
 export const STARTED = 'started';
 export const CHANGE_TURN = 'change_turn';
 export const SET_POSITION_DISK_BLACK = 'set_position_disk_black';

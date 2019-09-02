@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setBoard, setStarted } from '../actions';
+import { setBoard, setAllowedCells } from '../actions';
 
 import BoardLayout from '../components/Board';
 
@@ -24,10 +24,6 @@ class Board extends React.Component {
 
   componentDidMount() {
     this.initialBoard(); // dispatch action
-  }
-
-  componentDidUpdate() {
-    this.allowedCells(); // dispatch action
   }
 
   diskOponent = () => (this.props.currentPlayer === 'white' ? 'black' : 'white');
@@ -60,13 +56,17 @@ class Board extends React.Component {
 
   allowedCells() {
     // says what cells are enable for clicks
-    const board = this.props.board.slice();
+    const { board } = this.props;
+    let bool; let cant = 0;
     for (let x = 0; x < 8; x++) {
       for (let y = 0; y < 8; y++) {
-        board[x][y].allowedCell = this.canPutDisk(x, y);
+        bool = this.canPutDisk(x, y);
+        board[x][y].allowedCell = bool;
+        if (bool) cant += 1;
       }
     }
-    return board;
+    this.props.setBoard(board);
+    this.props.setAllowedCells(cant);
   }
 
   createBoard() {
@@ -83,7 +83,7 @@ class Board extends React.Component {
 
   async initialBoard() {
     // Set initial disks: two white and two black in center
-    let board = this.createBoard();
+    const board = this.createBoard();
     this.props.posWhite.forEach((pos) => {
       board[pos[0]][pos[1]].disk = 'white'; // White
     });
@@ -91,8 +91,7 @@ class Board extends React.Component {
       board[pos[0]][pos[1]].disk = 'black'; // Black
     });
     await this.props.setBoard(board);
-    board = this.allowedCells();
-    this.props.setBoard(board);
+    await this.allowedCells();
   }
 
   render() {
@@ -104,15 +103,14 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => ({
   board: state.board,
-  started: state.started,
   currentPlayer: state.currentPlayer,
   posWhite: state.posDisksWhite,
   posBlack: state.posDisksBlack,
 });
 
 const mapDispatchToProps = {
-  setStarted,
   setBoard,
+  setAllowedCells,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

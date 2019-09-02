@@ -27,12 +27,12 @@ const directions = [
 class Cell extends Component {
   diskOponent = () => (this.props.currentPlayer === 'white' ? 'black' : 'white')
 
-  inBoard = (x, y) => x >= 0 && x < 8 && y >= 0 && y < 8
+  inBoard = (x, y) => (x >= 0) && (x < 8) && (y >= 0) && (y < 8)
 
   // reverse disks oponent
-  async reverse() {
+  reverse() {
     if (this.props.allowed) {
-      const board = this.props.board.slice();
+      const { board } = this.props;
       const x = this.props.position[0];
       const y = this.props.position[1];
       // save position disks in the global state
@@ -64,8 +64,8 @@ class Cell extends Component {
           this.props.addDisks(cantDisks);
         }
       });
-      await this.props.changeTurn();
-      await this.props.setBoard(board);
+      this.props.changeTurn();
+      this.props.setBoard(board);
     } else {
       this.props.setError('No can put your disk here');
       setTimeout(() => {

@@ -2,6 +2,7 @@ import {
   SET_NAME_PLAYERS,
   SET_COLOR_PLAYERS,
   SET_BOARD,
+  SET_ALLOWED_CELLS,
   STARTED,
   CHANGE_TURN,
   SET_POSITION_DISK_BLACK,
@@ -25,6 +26,10 @@ export const setStarted = (payload) => ({
 });
 export const setBoard = (payload) => ({
   type: SET_BOARD,
+  payload,
+});
+export const setAllowedCells = (payload) => ({
+  type: SET_ALLOWED_CELLS,
   payload,
 });
 export const changeTurn = () => ({

@@ -15,7 +15,7 @@ class Game extends Component {
 
   render() {
     const {
-      playerOne, playerTwo, currentPlayer, error,
+      playerOne, playerTwo, error,
     } = this.props;
     return (
       <>
@@ -26,7 +26,6 @@ class Game extends Component {
               name={playerOne.name}
               color={playerOne.colorDisk}
               total={playerOne.totalDisks}
-              currentPlayer={currentPlayer}
             />
           </div>
           <div className="flexItem">
@@ -37,7 +36,6 @@ class Game extends Component {
               name={playerTwo.name}
               color={playerTwo.colorDisk}
               total={playerTwo.totalDisks}
-              currentPlayer={currentPlayer}
             />
           </div>
         </div>
@@ -52,7 +50,6 @@ const mapStateToProps = (state) => ({
   error: state.error,
   playerOne: state.playerOne,
   playerTwo: state.playerTwo,
-  currentPlayer: state.currentPlayer,
 });
 
 const mapDispatchToProps = {

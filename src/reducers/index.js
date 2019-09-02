@@ -2,6 +2,7 @@ import {
   SET_NAME_PLAYERS,
   SET_COLOR_PLAYERS,
   SET_BOARD,
+  SET_ALLOWED_CELLS,
   STARTED,
   CHANGE_TURN,
   SET_POSITION_DISK_BLACK,
@@ -46,6 +47,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         board: action.payload,
+      };
+    case SET_ALLOWED_CELLS:
+      return {
+        ...state,
+        allowedCells: action.payload,
       };
     case CHANGE_TURN:
       return {

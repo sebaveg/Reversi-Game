@@ -30,8 +30,12 @@ const Players = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  currentPlayer: state.currentPlayer,
+});
+
 const mapDispatchTopProps = {
   changeTurn,
 };
 
-export default connect(null, mapDispatchTopProps)(Players);
+export default connect(mapStateToProps, mapDispatchTopProps)(Players);

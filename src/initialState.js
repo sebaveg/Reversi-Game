@@ -2,6 +2,7 @@ export default {
   error: '',
   started: false,
   board: [], // Array 2D
+  allowedCells: 4,
   playerOne: {
     name: '',
     colorDisk: '',
