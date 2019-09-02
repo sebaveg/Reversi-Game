@@ -23,19 +23,62 @@ class Board extends React.Component {
   }
 
   componentDidMount() {
-    this.initialBoard(); // dispatch action
+    this.initialBoard();
   }
 
   diskOponent = () => (this.props.currentPlayer === 'white' ? 'black' : 'white');
 
   inBoard = (x, y) => ((x >= 0) && (x < 8) && (y >= 0) && (y < 8));
 
+  createBoard() {
+    const board = this.rows.slice();
+    for (let i = 0; i < 8; i += 1) {
+      board[i] = this.cols.map((row) => ({
+        id: row + board[i],
+        disk: null, // white or black
+        allowedCell: false, // says if enable or disable click for put disk
+      }));
+    }
+    return board;
+  }
+
+  async initialBoard() {
+    // Set initial disks: two white and two black in center
+    const board = this.createBoard();
+    this.props.posDiskWhite.forEach((pos) => {
+      board[pos[0]][pos[1]].disk = 'white'; // White
+    });
+    this.props.posDiskBlack.forEach((pos) => {
+      board[pos[0]][pos[1]].disk = 'black'; // Black
+    });
+    await this.props.setBoard(board); // dispatch action
+    this.allowedCells();
+  }
+
+  allowedCells() {
+    // says what cells are enable for clicks
+    const b = this.props.board.slice();
+    let bool; let cant = 0;
+    for (let x = 0; x < 8; x++) {
+      for (let y = 0; y < 8; y++) {
+        bool = true; // this.canPutDisk(x, y);
+        b[x][y].allowedCell = bool;
+        b[x][y].lala = 'pepe';
+        if (bool) cant += 1;
+      }
+    }
+    return cant;
+    // await this.props.setBoard(board);
+    // this.props.setAllowedCells(cant);
+  }
+
   canPutDisk(x, y) {
     // boolean if can put one disk in the cell in (x,y)
-    const board = this.props.board.slice();
+    const { board } = this.props;
     let can = false;
     if (board[x][y].disk) return false;
-    let X; let Y;
+    let X;
+    let Y;
     let cantDisks;
     directions.forEach((direction) => {
       cantDisks = 0;
@@ -54,46 +97,6 @@ class Board extends React.Component {
     return can;
   }
 
-  allowedCells() {
-    // says what cells are enable for clicks
-    const { board } = this.props;
-    let bool; let cant = 0;
-    for (let x = 0; x < 8; x++) {
-      for (let y = 0; y < 8; y++) {
-        bool = this.canPutDisk(x, y);
-        board[x][y].allowedCell = bool;
-        if (bool) cant += 1;
-      }
-    }
-    this.props.setBoard(board);
-    this.props.setAllowedCells(cant);
-  }
-
-  createBoard() {
-    const board = this.cols.slice();
-    for (let i = 0; i < 8; i += 1) {
-      board[i] = this.rows.map((row) => ({
-        id: row + board[i],
-        disk: null, // white or black
-        allowedCell: false, // says if enable or disable click for put disk
-      }));
-    }
-    return board;
-  }
-
-  async initialBoard() {
-    // Set initial disks: two white and two black in center
-    const board = this.createBoard();
-    this.props.posWhite.forEach((pos) => {
-      board[pos[0]][pos[1]].disk = 'white'; // White
-    });
-    this.props.posBlack.forEach((pos) => {
-      board[pos[0]][pos[1]].disk = 'black'; // Black
-    });
-    await this.props.setBoard(board);
-    await this.allowedCells();
-  }
-
   render() {
     return (
       <BoardLayout board={this.props.board} />
@@ -104,8 +107,8 @@ class Board extends React.Component {
 const mapStateToProps = (state) => ({
   board: state.board,
   currentPlayer: state.currentPlayer,
-  posWhite: state.posDisksWhite,
-  posBlack: state.posDisksBlack,
+  posDiskWhite: state.posDisksWhite,
+  posDiskBlack: state.posDisksBlack,
 });
 
 const mapDispatchToProps = {

@@ -13,6 +13,12 @@ class Game extends Component {
     props.setStarted(); // dispatch action
   }
 
+  componentDidUpdate() {
+    // if (this.props.allowedCells === 0) {
+    //   console.log('has ganado');
+    // }
+  }
+
   render() {
     const {
       playerOne, playerTwo, error,
@@ -48,6 +54,7 @@ class Game extends Component {
 
 const mapStateToProps = (state) => ({
   error: state.error,
+  allowedCells: state.allowedCells,
   playerOne: state.playerOne,
   playerTwo: state.playerTwo,
 });

@@ -61,7 +61,8 @@ class Cell extends Component {
           cells.forEach((cell) => {
             board[cell[0]][cell[1]].disk = this.props.currentPlayer;
           });
-          this.props.addDisks(cantDisks);
+          this.props.addDisks(cantDisks); // dispatch action
+          this.props.allowedCells();
         }
       });
       this.props.changeTurn();
