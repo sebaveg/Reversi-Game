@@ -29,6 +29,7 @@ class Cell extends Component {
       board[x][y].allowedCell.forEach((cell) => {
         board[cell.X][cell.Y].disk = this.props.currentPlayer;
       });
+      this.props.changeTurn();
       this.props.addDisks(this.props.allowed.length); // dispatch action
       this.props.setBoard(board);
       // save position disks in the global state
@@ -38,7 +39,6 @@ class Cell extends Component {
       if (this.props.currentPlayer === 'white') {
         this.props.setPosDisksWhite([x, y]);
       }
-      this.props.changeTurn();
     } else {
       this.props.setError('No can put your disk here');
       setTimeout(() => {

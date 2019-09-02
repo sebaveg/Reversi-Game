@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setStarted } from '../actions';
+import { setStarted, setWinner } from '../actions';
 
 import Board from './Board';
 import Players from '../components/Players';
@@ -14,9 +14,22 @@ class Game extends Component {
   }
 
   componentDidUpdate() {
-    // if (this.props.allowedCells === 0) {
-    //   console.log('has ganado');
-    // }
+    if (this.props.allowedCells === 0) {
+      this.winner();
+      this.props.history.push('/end');
+    }
+  }
+
+  winner() {
+    if (this.props.playerOne.totalDisks > this.props.playerTwo.totalDisks) {
+      this.props.setWinner(this.props.playerOne.name);
+    }
+    if (this.props.playerOne.totalDisks < this.props.playerTwo.totalDisks) {
+      this.props.setWinner(this.props.playerTwo.name);
+    }
+    if (this.props.playerOne.totalDisks === this.props.playerTwo.totalDisks) {
+      this.props.setWinner('Draw');
+    }
   }
 
   render() {
@@ -61,6 +74,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   setStarted,
+  setWinner,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
