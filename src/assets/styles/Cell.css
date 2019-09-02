@@ -2,8 +2,8 @@
   border: 1px solid white;
   color: rgba(255, 255, 255, .2);
   cursor: pointer;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
 }
 .cell:hover {
   color: white;
@@ -12,12 +12,12 @@
   border: 1px solid yellow;
   color: yellow;
   cursor: pointer;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
 }
 .black, .white {
-  height: 60px;
-  width: 60px;
+  height: 55px;
+  width: 55px;
   border: 2px solid grey;
   border-radius: 50%;
   margin: 0 auto;

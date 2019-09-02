@@ -13,17 +13,6 @@ import CellLayout from '../components/Cell';
 
 import '../assets/styles/Cell.css';
 
-const directions = [
-  [0, 1], // right
-  [0, -1], // left
-  [-1, 0], // up
-  [1, 0], // down
-  [1, 1], // down right
-  [1, -1], // down left
-  [-1, 1], // up right
-  [-1, -1], // up left
-];
-
 class Cell extends Component {
   diskOponent = () => (this.props.currentPlayer === 'white' ? 'black' : 'white')
 
@@ -31,10 +20,17 @@ class Cell extends Component {
 
   // reverse disks oponent
   reverse() {
-    if (this.props.allowed) {
+    if (this.props.allowed.length > 0) {
+      this.props.onClickCell();
       const { board } = this.props;
       const x = this.props.position[0];
       const y = this.props.position[1];
+      board[x][y].disk = this.props.currentPlayer;
+      board[x][y].allowedCell.forEach((cell) => {
+        board[cell.X][cell.Y].disk = this.props.currentPlayer;
+      });
+      this.props.addDisks(this.props.allowed.length); // dispatch action
+      this.props.setBoard(board);
       // save position disks in the global state
       if (this.props.currentPlayer === 'black') {
         this.props.setPosDisksBlack([x, y]);
@@ -42,31 +38,7 @@ class Cell extends Component {
       if (this.props.currentPlayer === 'white') {
         this.props.setPosDisksWhite([x, y]);
       }
-      board[x][y].disk = this.props.currentPlayer;
-      let X; let Y; let cantDisks;
-      let cells;
-      // Reverse all disks in one direction
-      directions.forEach((direction) => {
-        cantDisks = 0;
-        X = x;
-        Y = y;
-        cells = [];
-        do {
-          X += direction[0];
-          Y += direction[1];
-          cells.push([X, Y]);
-          cantDisks += 1;
-        } while (this.inBoard(X, Y) && board[X][Y].disk === this.diskOponent());
-        if (cantDisks > 1 && this.inBoard(X, Y) && board[X][Y].disk === this.props.currentPlayer) {
-          cells.forEach((cell) => {
-            board[cell[0]][cell[1]].disk = this.props.currentPlayer;
-          });
-          this.props.addDisks(cantDisks); // dispatch action
-          this.props.allowedCells();
-        }
-      });
       this.props.changeTurn();
-      this.props.setBoard(board);
     } else {
       this.props.setError('No can put your disk here');
       setTimeout(() => {
