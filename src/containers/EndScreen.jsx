@@ -19,7 +19,7 @@ class EndScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  winner: state.winner,
+  winner: state.present.winner,
 });
 
 export default connect(mapStateToProps)(EndScreen);

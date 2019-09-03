@@ -31,7 +31,7 @@ const Players = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  currentPlayer: state.currentPlayer,
+  currentPlayer: state.present.currentPlayer,
 });
 
 const mapDispatchTopProps = {

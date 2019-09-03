@@ -67,12 +67,12 @@ class Game extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  error: state.error,
-  allowedCells: state.allowedCells,
-  playerOne: state.playerOne,
-  playerTwo: state.playerTwo,
-  disksWhite: state.disksWhite,
-  disksBlack: state.disksBlack,
+  error: state.present.error,
+  allowedCells: state.present.allowedCells,
+  playerOne: state.present.playerOne,
+  playerTwo: state.present.playerTwo,
+  disksWhite: state.present.disksWhite,
+  disksBlack: state.present.disksBlack,
 });
 
 const mapDispatchToProps = {
