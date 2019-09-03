@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import board from './board';
-import player from './player';
+import board from './reducerBoard';
+import player from './reducerPlayer';
 
 const reducerApp = combineReducers({
   board,

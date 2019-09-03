@@ -6,8 +6,9 @@ import {
   SET_WINNER,
 } from '../types/index';
 
+import initialState from '../initialStates/statePlayer';
 
-const reducers = (state, action) => {
+const player = (state = initialState, action) => {
   switch (action.type) {
     case SET_NAME_PLAYERS:
       return {
@@ -53,4 +54,4 @@ const reducers = (state, action) => {
   }
 };
 
-export default reducers;
+export default player;

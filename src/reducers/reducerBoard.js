@@ -8,8 +8,9 @@ import {
   SET_ERROR,
 } from '../types/index';
 
+import initialState from '../initialStates/stateBoard';
 
-const reducers = (state, action) => {
+const reducers = (state = initialState, action) => {
   switch (action.type) {
     case SET_BOARD:
       return {
