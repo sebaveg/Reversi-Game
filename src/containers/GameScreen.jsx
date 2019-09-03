@@ -35,7 +35,7 @@ class Game extends Component {
 
   render() {
     const {
-      playerOne, playerTwo, error, history,
+      playerOne, playerTwo, error, historyBoard,
     } = this.props;
     return (
       <>
@@ -45,7 +45,7 @@ class Game extends Component {
             <Players
               name={playerOne.name}
               color={playerOne.colorDisk}
-              total={playerOne.totalDisk}
+              total={playerOne.totalDisks}
             />
           </div>
           <div className="flexItem">
@@ -55,27 +55,31 @@ class Game extends Component {
             <Players
               name={playerTwo.name}
               color={playerTwo.colorDisk}
-              total={playerOne.totalDisk}
+              total={playerTwo.totalDisks}
             />
           </div>
         </div>
 
         <h2 className="title">Movement history</h2>
         <table cellPadding="5">
-          <tr>
-            <th>Nª</th>
-            <th>Player</th>
-            <th>Movement</th>
-            <th>Come back action</th>
-          </tr>
-          {history.map((movement, i) => (
+          <thead>
             <tr>
-              <td>{i + 1}</td>
-              <td>playerColor</td>
-              <td>Pisición</td>
-              <td><button type="button">Come back here</button></td>
+              <th>Nª</th>
+              <th>Player</th>
+              <th>Movement</th>
+              <th>Come back action</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {historyBoard.map((movement, i) => (
+              <tr key={i}>
+                <td>{i + 1}</td>
+                <td>playerColor</td>
+                <td>Pisición</td>
+                <td><button type="button">Come back here</button></td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </>
     );
@@ -84,8 +88,8 @@ class Game extends Component {
 
 const mapStateToProps = (state) => ({
   error: state.game.error,
-  history: state.board.past,
-  allowedCells: state.board.present.allowedCells,
+  allowedCells: state.game.allowedCells,
+  historyBoard: state.board.past,
   playerOne: state.players.present.playerOne,
   playerTwo: state.players.present.playerTwo,
 });

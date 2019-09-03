@@ -2,7 +2,6 @@ export default {
 
   error: '',
   board: [], // Array 2D
-  allowedCells: 4,
   posDisksWhite: [ // Position (x,y) of white disks
     [3, 3],
     [4, 4],

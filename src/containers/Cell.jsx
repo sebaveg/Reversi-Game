@@ -27,7 +27,7 @@ class Cell extends Component {
       board[x][y].allowedCell.forEach((cell) => {
         board[cell.X][cell.Y].disk = this.props.currentPlayer;
       });
-      this.props.setBoard(board);
+      // this.props.setBoard(board);
       await this.props.changeTurn();
     } else {
       this.props.setError('No can put your disk here');
