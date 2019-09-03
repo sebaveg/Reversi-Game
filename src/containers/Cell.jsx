@@ -60,8 +60,8 @@ class Cell extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  board: state.present.board,
-  currentPlayer: state.present.currentPlayer,
+  board: state.board.present.board,
+  currentPlayer: state.player.currentPlayer,
 });
 
 const mapDispatchToProps = {

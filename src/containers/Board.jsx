@@ -64,30 +64,31 @@ class Board extends React.Component {
 
   // says what cells are enable for clicks in current turn
   allowedCellsAndCountDisks() {
-    const b = this.props.board.slice();
-    let arrayCanReverse; let cantAllow = 0; let disksWhite = 0; let disksBlack = 0;
+    const board = this.props.board.slice();
+    let arrayCanReverse;
+    let cantAllow = 0; let disksWhite = 0; let disksBlack = 0;
     for (let x = 0; x < 8; x++) {
       for (let y = 0; y < 8; y++) {
         // array with positions enable for put disks)
         arrayCanReverse = this.canPutDisk(x, y);
-        b[x][y].allowedCell = arrayCanReverse;
+        board[x][y].allowedCell = arrayCanReverse;
         if (arrayCanReverse.length > 0) cantAllow += 1;
-        // count disks
-        if (b[x][y].disk === 'white') disksWhite += 1;
-        if (b[x][y].disk === 'black') disksBlack += 1;
+        // // count disks
+        if (board[x][y].disk === 'white') disksWhite += 1;
+        if (board[x][y].disk === 'black') disksBlack += 1;
       }
     }
+    this.props.setBoard(board);
     this.props.setAllowedCells(cantAllow); // dispatch how many cells enable
     this.props.addDisks({
       white: disksWhite, black: disksBlack,
     }); // dispatch how many disks for player
-    this.props.setBoard(b);
   }
 
   // array with positions enable for put disks
   canPutDisk(x, y) {
     const { board } = this.props;
-    if (board[x][y].disk) return false;
+    if (board[x][y].disk) return [];
     const canReverse = [];
     let X;
     let Y;
@@ -131,13 +132,13 @@ class Board extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  board: state.present.board,
-  currentPlayer: state.present.currentPlayer,
-  posDiskWhite: state.present.posDisksWhite,
-  posDiskBlack: state.present.posDisksBlack,
+  board: state.board.present.board,
+  currentPlayer: state.player.currentPlayer,
+  posDiskWhite: state.board.present.posDisksWhite,
+  posDiskBlack: state.board.present.posDisksBlack,
   // Redux uno/redo
-  canUndo: state.past.length > 0,
-  canRedo: state.future.length > 0,
+  canUndo: state.board.past.length > 0,
+  canRedo: state.board.future.length > 0,
 });
 
 const mapDispatchToProps = {
