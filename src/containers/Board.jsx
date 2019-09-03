@@ -27,9 +27,10 @@ class Board extends React.Component {
     this.initialBoard();
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     if (this.props.currentPlayer !== prevProps.currentPlayer) {
-      this.allowedCellsAndCountDisks(this.props.board);
+      const newBoard = this.allowedCellsAndCountDisks(this.props.board);
+      await this.props.setBoard(newBoard); // dispatch action
     }
   }
 
