@@ -24,8 +24,7 @@ const StartScreen = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.setColorPlayers(randomColorDisk());
-    props.setNamePlayers(players);
+    props.setNamePlayers(players, randomColorDisk());
     props.history.push('/game');
   };
 

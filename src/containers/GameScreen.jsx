@@ -22,13 +22,13 @@ class Game extends Component {
 
   winner() {
     // This can do better
-    if (this.props.disksWhite > this.props.disksBlack) {
-      this.props.setWinner(this.props.playerOne.colorDisk === 'white' ? this.props.playerOne.name : this.props.playerTwo.name);
+    if (this.props.playerOne.totalDisks > this.props.playerTwo.totalDisks) {
+      this.props.setWinner(this.props.playerOne);
     }
-    if (this.props.disksWhite < this.props.disksBlack) {
-      this.props.setWinner(this.props.playerOne.colorDisk === 'black' ? this.props.playerOne.name : this.props.playerTwo.name);
+    if (this.props.playerOne.totalDisks < this.props.playerTwo.totalDisks) {
+      this.props.setWinner(this.props.playerTwo);
     }
-    if (this.props.disksWhite === this.props.disksBlack) {
+    if (this.props.playerOne.totalDisks === this.props.playerTwo.totalDisks) {
       this.props.setWinner('Draw');
     }
   }
@@ -60,19 +60,17 @@ class Game extends Component {
           </div>
         </div>
         <h2 className="title">Movement history</h2>
-        <p>asljklsjgkasjglajslgjkasklgjaskljgklajsgklajslgkjasgñasjgklñj</p>
+        <p>soon</p>
       </>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  error: state.present.error,
-  allowedCells: state.present.allowedCells,
-  playerOne: state.present.playerOne,
-  playerTwo: state.present.playerTwo,
-  disksWhite: state.present.disksWhite,
-  disksBlack: state.present.disksBlack,
+  error: state.board.present.error,
+  allowedCells: state.board.present.allowedCells,
+  playerOne: state.playerOne,
+  playerTwo: state.playerTwo,
 });
 
 const mapDispatchToProps = {
