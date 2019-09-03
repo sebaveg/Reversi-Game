@@ -59,19 +59,20 @@ class Game extends Component {
             />
           </div>
         </div>
+
         <h2 className="title">Movement history</h2>
         <table cellPadding="5">
           <tr>
             <th>Nª</th>
             <th>Player</th>
             <th>Movement</th>
-            <th />
+            <th>Come back action</th>
           </tr>
           {history.map((movement, i) => (
             <tr>
               <td>{i + 1}</td>
-              <td>player</td>
-              <td>{movement.disksWhite}</td>
+              <td>playerColor</td>
+              <td>Pisición</td>
               <td><button type="button">Come back here</button></td>
             </tr>
           ))}
@@ -85,8 +86,8 @@ const mapStateToProps = (state) => ({
   error: state.game.error,
   history: state.board.past,
   allowedCells: state.board.present.allowedCells,
-  playerOne: state.players.playerOne,
-  playerTwo: state.players.playerTwo,
+  playerOne: state.players.present.playerOne,
+  playerTwo: state.players.present.playerTwo,
 });
 
 const mapDispatchToProps = {

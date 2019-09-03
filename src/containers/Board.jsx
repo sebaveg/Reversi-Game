@@ -63,34 +63,27 @@ class Board extends React.Component {
     await this.props.setBoard(newBoard); // dispatch action
   }
 
-  // click cell
-  async handleCick() {
-    const { board } = this.props;
-    const newBoard = this.allowedCellsAndCountDisks(board);
-    await this.props.setBoard(newBoard);
-  }
-
   // says what cells are enable for clicks in current turn
   allowedCellsAndCountDisks(board) {
     const b = board.slice();
     let arrayCanReverse;
-    // let cantAllow = 0; let disksWhite = 0; let disksBlack = 0;
+    let cantAllow = 0; let disksWhite = 0; let disksBlack = 0;
     for (let x = 0; x < 8; x++) {
       for (let y = 0; y < 8; y++) {
         // array with positions enable for put disks)
         arrayCanReverse = this.canPutDisk(board, x, y);
         b[x][y].allowedCell = arrayCanReverse;
-        // if (arrayCanReverse.length > 0) cantAllow += 1;
-        // // count disks
-        // if (b[x][y].disk === 'white') disksWhite += 1;
-        // if (b[x][y].disk === 'black') disksBlack += 1;
+        if (arrayCanReverse.length > 0) cantAllow += 1;
+        // count disks
+        if (b[x][y].disk === 'white') disksWhite += 1;
+        if (b[x][y].disk === 'black') disksBlack += 1;
       }
     }
+    this.props.setAllowedCells(cantAllow); // dispatch how many cells enable
+    this.props.addDisks({
+      white: disksWhite, black: disksBlack,
+    }); // dispatch how many disks for player
     return b;
-    // this.props.setAllowedCells(cantAllow); // dispatch how many cells enable
-    // this.props.addDisks({
-    //   white: disksWhite, black: disksBlack,
-    // }); // dispatch how many disks for player
   }
 
   // array with positions enable for put disks
@@ -127,7 +120,7 @@ class Board extends React.Component {
   render() {
     return (
       <>
-        <BoardLayout board={this.props.board} onClickCell={this.handleCick.bind(this)} />
+        <BoardLayout board={this.props.board} />
         <button type="button" onClick={this.props.onUndo} disabled={!this.props.canUndo}>
           Undo
         </button>
@@ -143,7 +136,7 @@ const mapStateToProps = (state) => ({
   board: state.board.present.board,
   posDiskWhite: state.board.present.posDisksWhite,
   posDiskBlack: state.board.present.posDisksBlack,
-  currentPlayer: state.players.currentPlayer,
+  currentPlayer: state.players.present.currentPlayer,
   // Redux uno/redo
   canUndo: state.board.past.length > 0,
   canRedo: state.board.future.length > 0,

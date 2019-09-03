@@ -8,6 +8,7 @@ import {
   SET_POSITION_DISK_BLACK,
   SET_POSITION_DISK_WHITE,
   ADD_DISKS,
+  PUT_DISKS,
   CLICK_CELL,
   SET_WINNER,
   SET_ERROR,
@@ -50,6 +51,10 @@ export const addDisks = (payload) => ({
 });
 export const clickCell = (payload) => ({
   type: CLICK_CELL,
+  payload,
+});
+export const putDisks = (payload) => ({
+  type: PUT_DISKS,
   payload,
 });
 export const setWinner = (payload) => ({

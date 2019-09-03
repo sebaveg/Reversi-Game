@@ -4,8 +4,7 @@ import {
   setError,
   setBoard,
   changeTurn,
-  setPosDisksWhite,
-  setPosDisksBlack,
+  putDisks,
 } from '../actions';
 
 import CellLayout from '../components/Cell';
@@ -20,23 +19,16 @@ class Cell extends Component {
   // reverse disks oponent
   async reverse() {
     if (this.props.allowed.length > 0) {
-      this.props.onClickCell();
       const { board } = this.props;
       const x = this.props.position[0];
       const y = this.props.position[1];
       board[x][y].disk = this.props.currentPlayer;
+      // this.props.putDisks({ x, y, disk: this.props.currentPlayer });
       board[x][y].allowedCell.forEach((cell) => {
         board[cell.X][cell.Y].disk = this.props.currentPlayer;
       });
-      await this.props.changeTurn();
       this.props.setBoard(board);
-      // save position disks in the global state
-      if (this.props.currentPlayer === 'black') {
-        this.props.setPosDisksBlack([x, y]);
-      }
-      if (this.props.currentPlayer === 'white') {
-        this.props.setPosDisksWhite([x, y]);
-      }
+      await this.props.changeTurn();
     } else {
       this.props.setError('No can put your disk here');
       setTimeout(() => {
@@ -64,15 +56,14 @@ class Cell extends Component {
 
 const mapStateToProps = (state) => ({
   board: state.board.present.board,
-  currentPlayer: state.players.currentPlayer,
+  currentPlayer: state.players.present.currentPlayer,
 });
 
 const mapDispatchToProps = {
   setError,
   setBoard,
   changeTurn,
-  setPosDisksWhite,
-  setPosDisksBlack,
+  putDisks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cell);
