@@ -4,6 +4,9 @@
 
 [Demo in Now](https://reversi-game.sebastiancardoso92.now.sh)
 
+![Captura de la App](.readme-pictures/captura_1.png)
+![Captura de la App](.readme-pictures/captura_2.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Libraries
