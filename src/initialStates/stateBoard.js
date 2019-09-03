@@ -11,7 +11,5 @@ export default {
     [3, 4],
     [4, 3],
   ],
-  disksWhite: 2,
-  disksBlack: 2,
 
 };

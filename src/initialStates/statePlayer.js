@@ -1,6 +1,5 @@
 export default {
 
-  started: false,
   playerOne: {
     name: '',
     colorDisk: '',
@@ -12,6 +11,5 @@ export default {
     totalDisks: 2,
   },
   currentPlayer: 'black', // or white
-  winner: '',
 
 };

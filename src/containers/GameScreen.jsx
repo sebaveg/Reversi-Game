@@ -35,7 +35,7 @@ class Game extends Component {
 
   render() {
     const {
-      disksWhite, disksBlack, playerOne, playerTwo, error, history,
+      playerOne, playerTwo, error, history,
     } = this.props;
     return (
       <>
@@ -45,7 +45,7 @@ class Game extends Component {
             <Players
               name={playerOne.name}
               color={playerOne.colorDisk}
-              total={playerOne.colorDisk === 'black' ? disksBlack : disksWhite}
+              total={playerOne.totalDisk}
             />
           </div>
           <div className="flexItem">
@@ -55,7 +55,7 @@ class Game extends Component {
             <Players
               name={playerTwo.name}
               color={playerTwo.colorDisk}
-              total={playerOne.colorDisk === 'white' ? disksWhite : disksBlack}
+              total={playerOne.totalDisk}
             />
           </div>
         </div>
@@ -63,12 +63,14 @@ class Game extends Component {
         <table cellPadding="5">
           <tr>
             <th>Nª</th>
+            <th>Player</th>
             <th>Movement</th>
             <th />
           </tr>
           {history.map((movement, i) => (
             <tr>
-              <td>{i}</td>
+              <td>{i + 1}</td>
+              <td>player</td>
               <td>{movement.disksWhite}</td>
               <td><button type="button">Come back here</button></td>
             </tr>
@@ -80,11 +82,11 @@ class Game extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  error: state.board.present.error,
+  error: state.game.error,
   history: state.board.past,
   allowedCells: state.board.present.allowedCells,
-  playerOne: state.player.playerOne,
-  playerTwo: state.player.playerTwo,
+  playerOne: state.players.playerOne,
+  playerTwo: state.players.playerTwo,
 });
 
 const mapDispatchToProps = {

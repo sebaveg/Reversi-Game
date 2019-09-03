@@ -29,7 +29,7 @@ class Board extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.currentPlayer !== prevProps.currentPlayer) {
-      this.allowedCellsAndCountDisks();
+      this.allowedCellsAndCountDisks(this.props.board);
     }
   }
 
@@ -58,37 +58,44 @@ class Board extends React.Component {
     this.props.posDiskBlack.forEach((pos) => {
       board[pos[0]][pos[1]].disk = 'black'; // Black
     });
-    await this.props.setBoard(board); // dispatch action
-    this.allowedCellsAndCountDisks();
+    const newBoard = this.allowedCellsAndCountDisks(board);
+    await this.props.setBoard(newBoard); // dispatch action
+  }
+
+  // click cell
+  async handleCick() {
+    const { board } = this.props;
+    const newBoard = this.allowedCellsAndCountDisks(board);
+    await this.props.setBoard(newBoard);
   }
 
   // says what cells are enable for clicks in current turn
-  allowedCellsAndCountDisks() {
-    const board = this.props.board.slice();
+  allowedCellsAndCountDisks(board) {
+    const b = board.slice();
     let arrayCanReverse;
-    let cantAllow = 0; let disksWhite = 0; let disksBlack = 0;
+    // let cantAllow = 0; let disksWhite = 0; let disksBlack = 0;
     for (let x = 0; x < 8; x++) {
       for (let y = 0; y < 8; y++) {
         // array with positions enable for put disks)
-        arrayCanReverse = this.canPutDisk(x, y);
-        board[x][y].allowedCell = arrayCanReverse;
-        if (arrayCanReverse.length > 0) cantAllow += 1;
+        arrayCanReverse = this.canPutDisk(board, x, y);
+        b[x][y].allowedCell = arrayCanReverse;
+        // if (arrayCanReverse.length > 0) cantAllow += 1;
         // // count disks
-        if (board[x][y].disk === 'white') disksWhite += 1;
-        if (board[x][y].disk === 'black') disksBlack += 1;
+        // if (b[x][y].disk === 'white') disksWhite += 1;
+        // if (b[x][y].disk === 'black') disksBlack += 1;
       }
     }
-    this.props.setBoard(board);
-    this.props.setAllowedCells(cantAllow); // dispatch how many cells enable
-    this.props.addDisks({
-      white: disksWhite, black: disksBlack,
-    }); // dispatch how many disks for player
+    return b;
+    // this.props.setAllowedCells(cantAllow); // dispatch how many cells enable
+    // this.props.addDisks({
+    //   white: disksWhite, black: disksBlack,
+    // }); // dispatch how many disks for player
   }
 
   // array with positions enable for put disks
-  canPutDisk(x, y) {
-    const { board } = this.props;
-    if (board[x][y].disk) return [];
+  canPutDisk(board, x, y) {
+    const b = board.slice();
+    if (b[x][y].disk) return [];
     const canReverse = [];
     let X;
     let Y;
@@ -104,9 +111,9 @@ class Board extends React.Component {
         X += direction[0];
         Y += direction[1];
         cantDisks += 1;
-      } while (this.inBoard(X, Y) && board[X][Y].disk === this.diskOponent());
+      } while (this.inBoard(X, Y) && b[X][Y].disk === this.diskOponent());
 
-      if (cantDisks > 1 && this.inBoard(X, Y) && board[X][Y].disk === this.props.currentPlayer) {
+      if (cantDisks > 1 && this.inBoard(X, Y) && b[X][Y].disk === this.props.currentPlayer) {
         canReverse.push(cells);
         // cells.forEach((cell) => {
         //   board[cell[0]][cell[1]].disk = this.props.currentPlayer;
@@ -119,7 +126,7 @@ class Board extends React.Component {
   render() {
     return (
       <>
-        <BoardLayout board={this.props.board} onClickCell={this.allowedCellsAndCountDisks.bind(this)} />
+        <BoardLayout board={this.props.board} onClickCell={this.handleCick.bind(this)} />
         <button type="button" onClick={this.props.onUndo} disabled={!this.props.canUndo}>
           Undo
         </button>
@@ -133,9 +140,9 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => ({
   board: state.board.present.board,
-  currentPlayer: state.player.currentPlayer,
   posDiskWhite: state.board.present.posDisksWhite,
   posDiskBlack: state.board.present.posDisksBlack,
+  currentPlayer: state.players.currentPlayer,
   // Redux uno/redo
   canUndo: state.board.past.length > 0,
   canRedo: state.board.future.length > 0,

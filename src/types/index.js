@@ -7,5 +7,6 @@ export const CHANGE_TURN = 'change_turn';
 export const SET_POSITION_DISK_BLACK = 'set_position_disk_black';
 export const SET_POSITION_DISK_WHITE = 'set_position_disk_white';
 export const ADD_DISKS = 'add_disks';
+export const CLICK_CELL = 'click_cell';
 export const SET_WINNER = 'set_winner';
 export const SET_ERROR = 'set_error';

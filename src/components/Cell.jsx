@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Cell = ({
-  disk, allowed, children, onClick,
+  disk, allowed, children, position, onClick,
 }) => (
   <td className={allowed.length > 0 ? 'highlight' : 'cell'} onClick={onClick}>
     {disk !== 'black' && disk !== 'white' ? children : null}

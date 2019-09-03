@@ -18,7 +18,7 @@ class Cell extends Component {
   inBoard = (x, y) => (x >= 0) && (x < 8) && (y >= 0) && (y < 8)
 
   // reverse disks oponent
-  reverse() {
+  async reverse() {
     if (this.props.allowed.length > 0) {
       this.props.onClickCell();
       const { board } = this.props;
@@ -28,7 +28,7 @@ class Cell extends Component {
       board[x][y].allowedCell.forEach((cell) => {
         board[cell.X][cell.Y].disk = this.props.currentPlayer;
       });
-      this.props.changeTurn();
+      await this.props.changeTurn();
       this.props.setBoard(board);
       // save position disks in the global state
       if (this.props.currentPlayer === 'black') {
@@ -46,11 +46,14 @@ class Cell extends Component {
   }
 
   render() {
-    const { disk, allowed, children } = this.props;
+    const {
+      disk, allowed, children, position,
+    } = this.props;
     return (
       <CellLayout
         disk={disk}
         allowed={allowed}
+        position={position}
         onClick={this.reverse.bind(this)}
       >
         {children}
@@ -61,7 +64,7 @@ class Cell extends Component {
 
 const mapStateToProps = (state) => ({
   board: state.board.present.board,
-  currentPlayer: state.player.currentPlayer,
+  currentPlayer: state.players.currentPlayer,
 });
 
 const mapDispatchToProps = {

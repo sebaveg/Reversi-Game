@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
+
+import game from './reducerGame';
 import board from './reducerBoard';
-import player from './reducerPlayer';
+import players from './reducerPlayers';
 
 const reducerApp = combineReducers({
+  game,
   board,
-  player,
+  players,
 });
 
 export default reducerApp;

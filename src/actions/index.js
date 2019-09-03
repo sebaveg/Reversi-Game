@@ -8,6 +8,7 @@ import {
   SET_POSITION_DISK_BLACK,
   SET_POSITION_DISK_WHITE,
   ADD_DISKS,
+  CLICK_CELL,
   SET_WINNER,
   SET_ERROR,
 } from '../types/index';
@@ -45,6 +46,10 @@ export const setPosDisksBlack = (payload) => ({
 });
 export const addDisks = (payload) => ({
   type: ADD_DISKS,
+  payload,
+});
+export const clickCell = (payload) => ({
+  type: CLICK_CELL,
   payload,
 });
 export const setWinner = (payload) => ({

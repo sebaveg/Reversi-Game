@@ -1,14 +1,12 @@
 import {
   SET_NAME_PLAYERS,
   SET_COLOR_PLAYERS,
-  STARTED,
   CHANGE_TURN,
-  SET_WINNER,
 } from '../types/index';
 
 import initialState from '../initialStates/statePlayer';
 
-const player = (state = initialState, action) => {
+const players = (state = initialState, action) => {
   switch (action.type) {
     case SET_NAME_PLAYERS:
       return {
@@ -34,24 +32,14 @@ const player = (state = initialState, action) => {
           colorDisk: action.payload === 'white' ? 'black' : 'white', // assign opposite color to player one
         },
       };
-    case STARTED:
-      return {
-        ...state,
-        started: true,
-      };
     case CHANGE_TURN:
       return {
         ...state,
         currentPlayer: state.currentPlayer === 'white' ? 'black' : 'white',
-      };
-    case SET_WINNER:
-      return {
-        ...state,
-        winner: action.payload,
       };
     default:
       return state;
   }
 };
 
-export default player;
+export default players;
