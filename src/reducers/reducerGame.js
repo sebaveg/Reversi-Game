@@ -2,7 +2,7 @@ import {
   STARTED,
   SET_WINNER,
   SET_ALLOWED_CELLS,
-  ADD_DISKS,
+  ADD_DISKS_PLAYERS,
   SET_ERROR,
 } from '../types/index';
 
@@ -26,7 +26,7 @@ const reducers = (state = initialState, action) => {
         ...state,
         allowedCells: action.payload,
       };
-    case ADD_DISKS:
+    case ADD_DISKS_PLAYERS:
       return {
         ...state,
         disksWhite: action.payload.white,

@@ -35,7 +35,7 @@ class Game extends Component {
 
   render() {
     const {
-      playerOne, playerTwo, error, historyBoard,
+      playerOne, playerTwo, error, historyPlayers,
     } = this.props;
     return (
       <>
@@ -71,11 +71,11 @@ class Game extends Component {
             </tr>
           </thead>
           <tbody>
-            {historyBoard.map((movement, i) => (
+            {historyPlayers.map((movement, i) => (
               <tr key={i}>
                 <td>{i + 1}</td>
-                <td>playerColor</td>
-                <td>Pisición</td>
+                <td>{i === 0 ? 'Black/white' : movement.currentPlayer}</td>
+                <td>{i === 0 ? 'Inicio' : ''}</td>
                 <td><button type="button">Come back here</button></td>
               </tr>
             ))}
@@ -89,7 +89,7 @@ class Game extends Component {
 const mapStateToProps = (state) => ({
   error: state.game.error,
   allowedCells: state.game.allowedCells,
-  historyBoard: state.board.past,
+  historyPlayers: state.players.past,
   playerOne: state.players.present.playerOne,
   playerTwo: state.players.present.playerTwo,
 });

@@ -2,7 +2,7 @@ import undoable from 'redux-undo';
 import {
   SET_NAME_PLAYERS,
   SET_COLOR_PLAYERS,
-  ADD_DISKS,
+  ADD_DISKS_PLAYERS,
   CHANGE_TURN,
 } from '../types/index';
 
@@ -34,7 +34,7 @@ const players = (state = initialState, action) => {
           colorDisk: action.payload === 'white' ? 'black' : 'white', // assign opposite color to player one
         },
       };
-    case ADD_DISKS:
+    case ADD_DISKS_PLAYERS:
       if (state.playerOne.colorDisk === 'white') {
         return {
           ...state,

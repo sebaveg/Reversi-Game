@@ -7,7 +7,7 @@ import {
   CHANGE_TURN,
   SET_POSITION_DISK_BLACK,
   SET_POSITION_DISK_WHITE,
-  ADD_DISKS,
+  ADD_DISKS_PLAYERS,
   PUT_DISKS,
   CLICK_CELL,
   SET_WINNER,
@@ -45,8 +45,8 @@ export const setPosDisksBlack = (payload) => ({
   type: SET_POSITION_DISK_BLACK,
   payload,
 });
-export const addDisks = (payload) => ({
-  type: ADD_DISKS,
+export const addDisksPlayers = (payload) => ({
+  type: ADD_DISKS_PLAYERS,
   payload,
 });
 export const clickCell = (payload) => ({
