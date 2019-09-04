@@ -14,7 +14,7 @@
 .sc {
   color: #fff;
   font-size: 12px;
-  position: absolute;
+  position: fixed;
   left: 5px;
   bottom: 5px;
   text-decoration: none;
@@ -22,7 +22,7 @@
 
 .App-logo-github {
   height: 25px;
-  position: absolute;
+  position: fixed;
   right: 5px;
   bottom: 5px;
 }
