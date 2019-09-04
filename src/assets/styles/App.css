@@ -11,7 +11,24 @@
   color: white;
 }
 
-.App-logo-react, .App-logo-redux {
+.sc {
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  text-decoration: none;
+}
+
+.App-logo-github {
+  height: 25px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+.App-logo-react,
+.App-logo-redux {
   height: 7vmin;
   margin-bottom: 1em;
   pointer-events: none;
