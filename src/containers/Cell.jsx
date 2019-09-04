@@ -22,11 +22,12 @@ class Cell extends Component {
       const { board } = this.props;
       const x = this.props.position[0];
       const y = this.props.position[1];
-      // await this.props.putDisks({ x, y, disk: this.props.currentPlayer });
+      // await this.props.putDisks({
+      //   x, y, disk: this.props.currentPlayer, allowedCells: this.props.board[x][y].allowedCell,
+      // });
       // board[x][y].disk = this.props.currentPlayer;
       board[x][y].allowedCell.forEach((cell) => {
         this.props.putDisks({ x: cell.X, y: cell.Y, disk: this.props.currentPlayer });
-        // board[cell.X][cell.Y].disk = this.props.currentPlayer;
       });
       // this.props.setBoard(board);
       await this.props.changeTurn();
