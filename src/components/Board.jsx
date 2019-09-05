@@ -4,7 +4,7 @@ import Cell from '../containers/Cell';
 
 import '../assets/styles/Board.css';
 
-const Board = ({ board }) => (
+const Board = ({ board = [] }) => (
   <table className="Board">
     <tbody>
       {board.map((row, x) => (

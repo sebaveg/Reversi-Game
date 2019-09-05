@@ -11,22 +11,20 @@ const Players = (props) => {
     name, color, total, currentPlayer,
   } = props;
   return (
-    <>
-      <div className="wrapperPlayers">
-        <h2>{name}</h2>
-        <div className={`circle${color}`} />
-        <h3>Total Disks</h3>
-        <div>{total}</div>
-        {/* Turn */}
-        {color === currentPlayer
-          ? (
-            <>
-              <h3 className="light"> Your turn </h3>
-              <button type="button" onClick={handleClick}>Skip</button>
-            </>
-          ) : null}
-      </div>
-    </>
+    <div className="wrapperPlayers">
+      <h2>{name}</h2>
+      <div className={`circle${color}`} />
+      <h3>Total Disks</h3>
+      <div>{total}</div>
+      {/* Turn */}
+      {color === currentPlayer
+        ? (
+          <>
+            <h3 className="light"> Your turn </h3>
+            <button type="button" onClick={handleClick}>Skip</button>
+          </>
+        ) : null}
+    </div>
   );
 };
 

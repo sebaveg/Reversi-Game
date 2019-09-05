@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Layout from '../components/Layout';
 
-import StartScreen from '../containers/StartScreen';
-import GameScreen from '../containers/GameScreen';
-import EndScreen from '../containers/EndScreen';
+import StartScreen from '../screens/StartScreen';
+import GameScreen from '../screens/GameScreen';
+import EndScreen from '../screens/EndScreen';
 import NotFound from '../components/NotFound';
 
 const App = () => (

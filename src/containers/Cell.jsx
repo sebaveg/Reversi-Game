@@ -40,17 +40,13 @@ class Cell extends Component {
   }
 
   render() {
-    const {
-      disk, allowed, children, position,
-    } = this.props;
     return (
       <CellLayout
-        disk={disk}
-        allowed={allowed}
-        position={position}
+        disk={this.props.disk}
+        allowed={this.props.allowed}
         onClick={this.reverse.bind(this)}
       >
-        {children}
+        {this.props.children}
       </CellLayout>
     );
   }

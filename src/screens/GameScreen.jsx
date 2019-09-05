@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setStarted, setWinner } from '../actions';
 
-import Board from './Board';
 import Players from '../components/Players';
+import Board from '../containers/Board';
 
 import '../assets/styles/Game.css';
 
-class Game extends Component {
+class GameScreen extends Component {
   constructor(props) {
     super(props);
     props.setStarted(); // dispatch action
@@ -99,4 +99,4 @@ const mapDispatchToProps = {
   setWinner,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

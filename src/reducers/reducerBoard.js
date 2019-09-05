@@ -29,7 +29,16 @@ const reducers = (state = initialState, action) => {
         board: action.payload,
       };
     case PUT_DISKS:
-      console.log('PUT DISKS');
+
+      // return {
+      //   ...state,
+      //   board: action.payload.allowedCells.map((cell) => reducer(state, action, cell))
+      // }
+
+      // board[x][y].allowedCell.forEach((cell) => {
+      //   this.props.putDisks({ x: cell.X, y: cell.Y, disk: this.props.currentPlayer });
+      //   // board[cell.X][cell.Y].disk = this.props.currentPlayer;
+      // });
 
       return {
         ...state,

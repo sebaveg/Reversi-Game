@@ -27,13 +27,23 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser..
 
 ### `npm test`
 
-Soon Jest and Enzyme test
+Jest and Enzyme test
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br>
 
-
  ## Styles
  Pure CSS
 
+## Directories
+1. Screens ---> Pages:
+   1. Start
+   2. Gaming
+   3. End
+2. Containers ---> StateFull components
+3. Components ---> Stateless Components
+4. Assets ---> CSS and SVG files
+5. Test ---> Snapshoot testing
+6. Actions, reducers, initialStates, types ---> Redux
+   

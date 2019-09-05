@@ -3,7 +3,6 @@ import {
   SET_WINNER,
   SET_ALLOWED_CELLS,
   ADD_DISKS_PLAYERS,
-  SET_ERROR,
 } from '../types/index';
 
 import initialState from '../initialStates/stateGame';
@@ -31,12 +30,6 @@ const reducers = (state = initialState, action) => {
         ...state,
         disksWhite: action.payload.white,
         disksBlack: action.payload.black,
-      };
-
-    case SET_ERROR:
-      return {
-        ...state,
-        error: action.payload,
       };
     default:
       return state;
