@@ -4,6 +4,8 @@ import {
   setError,
   setBoard,
   changeTurn,
+  setPosDisksWhite,
+  setPosDisksBlack,
   putDisks,
 } from '../actions';
 
@@ -29,6 +31,12 @@ class Cell extends Component {
       board[x][y].allowedCell.forEach((cell) => {
         this.props.putDisks({ x: cell.X, y: cell.Y, disk: this.props.currentPlayer });
       });
+      if (this.props.currentPlayer === 'white') {
+        this.props.setPosDisksWhite([x, y]);
+      }
+      if (this.props.currentPlayer === 'black') {
+        this.props.setPosDisksBlack([x, y]);
+      }
       // this.props.setBoard(board);
       await this.props.changeTurn();
     } else {
@@ -54,13 +62,15 @@ class Cell extends Component {
 
 const mapStateToProps = (state) => ({
   board: state.board.present.board,
-  currentPlayer: state.players.present.currentPlayer,
+  currentPlayer: state.players.currentPlayer,
 });
 
 const mapDispatchToProps = {
   setError,
   setBoard,
   changeTurn,
+  setPosDisksWhite,
+  setPosDisksBlack,
   putDisks,
 };
 

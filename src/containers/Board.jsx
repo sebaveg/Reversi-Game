@@ -117,11 +117,16 @@ class Board extends React.Component {
     return [].concat(...canReverse);
   }
 
+  handleUndo() {
+    console.log('Estamos manejsando el undo');
+    this.props.onUndo();
+  }
+
   render() {
     return (
       <>
         <BoardLayout board={this.props.board} />
-        <button type="button" onClick={this.props.onUndo} disabled={!this.props.canUndo}>
+        <button type="button" onClick={this.handleUndo.bind(this)} disabled={!this.props.canUndo}>
           Undo
         </button>
         <button type="button" onClick={this.props.onRedo} disabled={!this.props.canRedo}>
@@ -134,9 +139,9 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => ({
   board: state.board.present.board,
-  posDiskWhite: state.board.present.posDisksWhite,
-  posDiskBlack: state.board.present.posDisksBlack,
-  currentPlayer: state.players.present.currentPlayer,
+  posDiskWhite: state.disks.present.posDisksWhite,
+  posDiskBlack: state.disks.present.posDisksBlack,
+  currentPlayer: state.players.currentPlayer,
   // Redux uno/redo
   canUndo: state.board.past.length > 1,
   canRedo: state.board.future.length > 0,

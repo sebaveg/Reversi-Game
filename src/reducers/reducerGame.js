@@ -13,6 +13,10 @@ const reducers = (state = initialState, action) => {
       return {
         ...state,
         started: true,
+        allowedCells: 4,
+        disksWhite: 2,
+        disksBlack: 2,
+        winner: '',
       };
     case SET_WINNER:
       return {

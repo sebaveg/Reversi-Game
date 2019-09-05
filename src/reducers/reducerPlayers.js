@@ -1,4 +1,4 @@
-import undoable from 'redux-undo';
+
 import {
   SET_NAME_PLAYERS,
   SET_COLOR_PLAYERS,
@@ -69,4 +69,4 @@ const players = (state = initialState, action) => {
   }
 };
 
-export default undoable(players, { limit: false });
+export default players;

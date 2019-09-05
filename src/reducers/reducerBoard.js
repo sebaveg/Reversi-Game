@@ -1,8 +1,6 @@
-import undoable from 'redux-undo';
+import undoable, { groupByActionTypes } from 'redux-undo';
 import {
   SET_BOARD,
-  SET_POSITION_DISK_BLACK,
-  SET_POSITION_DISK_WHITE,
   PUT_DISKS,
 } from '../types/index';
 
@@ -48,19 +46,9 @@ const reducers = (state = initialState, action) => {
           }),
         }),
       };
-    case SET_POSITION_DISK_WHITE:
-      return {
-        ...state,
-        posDisksWhite: [...state.posDisksWhite, action.payload],
-      };
-    case SET_POSITION_DISK_BLACK:
-      state.posDisksBlack.push(action.payload);
-      return {
-        ...state,
-      };
     default:
       return state;
   }
 };
 
-export default undoable(reducers, { limit: false });
+export default undoable(reducers, { limit: false, groupBy: groupByActionTypes([PUT_DISKS]) });

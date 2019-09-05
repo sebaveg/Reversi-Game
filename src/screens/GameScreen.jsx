@@ -35,7 +35,7 @@ class GameScreen extends Component {
 
   render() {
     const {
-      playerOne, playerTwo, error, historyBoard,
+      playerOne, playerTwo, error, historyDisks,
     } = this.props;
     return (
       <>
@@ -71,11 +71,11 @@ class GameScreen extends Component {
             </tr>
           </thead>
           <tbody>
-            {historyBoard.map((movement, i) => (
+            {historyDisks.map((movement, i) => (
               <tr key={i}>
                 <td>{i + 1}</td>
-                <td>{i === 0 ? 'Black/white' : ''}</td>
-                <td>{i === 0 ? 'Inicio' : ''}</td>
+                <td>{i % 2 === 0 ? 'White' : 'Black'}</td>
+                <td>{i % 2 === 0 ? 'positionWhite' : 'positionBlack'}</td>
                 <td><button type="button">Come back here</button></td>
               </tr>
             ))}
@@ -89,14 +89,15 @@ class GameScreen extends Component {
 const mapStateToProps = (state) => ({
   error: state.game.error,
   allowedCells: state.game.allowedCells,
-  historyBoard: state.board.past,
-  playerOne: state.players.present.playerOne,
-  playerTwo: state.players.present.playerTwo,
+  historyDisks: state.disks.past,
+  playerOne: state.players.playerOne,
+  playerTwo: state.players.playerTwo,
 });
 
 const mapDispatchToProps = {
   setStarted,
   setWinner,
+  // onJump: (i) => UndoActionCreators.jumpToPast(i),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);
