@@ -1,4 +1,4 @@
-
+// import undoable, { excludeAction, includeAction } from 'redux-undo';
 import {
   SET_NAME_PLAYERS,
   SET_COLOR_PLAYERS,
@@ -70,3 +70,6 @@ const players = (state = initialState, action) => {
 };
 
 export default players;
+// export default undoable(players,
+//   { limit: false, filter: { includeAction(CAHNGE_TURN), excludeAction(ADD_DISKS_PLAYERS) } }
+// );

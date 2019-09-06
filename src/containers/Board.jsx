@@ -1,7 +1,12 @@
 import React from 'react';
 import { ActionCreators as UndoActionCreators } from 'redux-undo';
 import { connect } from 'react-redux';
-import { setBoard, setAllowedCells, addDisksPlayers } from '../actions';
+import {
+  setBoard,
+  setAllowedCells,
+  addDisksPlayers,
+  changeTurn,
+} from '../actions';
 
 import BoardLayout from '../components/Board';
 
@@ -27,10 +32,13 @@ class Board extends React.Component {
     this.initialBoard();
   }
 
-  async componentDidUpdate(prevProps) {
-    if (this.props.currentPlayer !== prevProps.currentPlayer) {
+  componentDidUpdate(prevProps) {
+    const passTurn = this.props.currentPlayer !== prevProps.currentPlayer
+    || this.props.posDiskWhite.length !== prevProps.posDiskWhite.length
+    || this.props.posDiskBlack.length !== prevProps.posDiskBlack.length;
+    if (passTurn) {
       const newBoard = this.allowedCellsAndCountDisks(this.props.board);
-      await this.props.setBoard(newBoard); // dispatch action
+      this.props.setBoard(newBoard); // dispatch action
     }
   }
 
@@ -117,9 +125,9 @@ class Board extends React.Component {
     return [].concat(...canReverse);
   }
 
-  handleUndo() {
-    console.log('Estamos manejsando el undo');
-    this.props.onUndo();
+  async handleUndo() {
+    await this.props.onUndo();
+    // await this.props.changeTurn();
   }
 
   render() {
@@ -151,6 +159,7 @@ const mapDispatchToProps = {
   setBoard,
   setAllowedCells,
   addDisksPlayers,
+  changeTurn,
   onUndo: () => UndoActionCreators.undo(),
   onRedo: () => UndoActionCreators.redo(),
 };

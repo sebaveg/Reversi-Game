@@ -1,23 +1,10 @@
-import undoable, { groupByActionTypes } from 'redux-undo';
+import undoable, { groupByActionTypes, includeAction } from 'redux-undo';
 import {
   SET_BOARD,
   PUT_DISKS,
 } from '../types/index';
 
 import initialState from '../initialStates/stateBoard';
-
-// const reducer = (state, action, cell) => {
-//   switch (action.type) {
-//     case PUT_DISKS:
-//       return Object.assign([...state.board], {
-//         [cell.X]: Object.assign([...state.board[cell.X]], {
-//           [cell.Y]: { allowedCell: [], disk: action.payload.disk },
-//         }),
-//       });
-//     default:
-//       return state;
-//   }
-// };
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
@@ -27,17 +14,6 @@ const reducers = (state = initialState, action) => {
         board: action.payload,
       };
     case PUT_DISKS:
-
-      // return {
-      //   ...state,
-      //   board: action.payload.allowedCells.map((cell) => reducer(state, action, cell))
-      // }
-
-      // board[x][y].allowedCell.forEach((cell) => {
-      //   this.props.putDisks({ x: cell.X, y: cell.Y, disk: this.props.currentPlayer });
-      //   // board[cell.X][cell.Y].disk = this.props.currentPlayer;
-      // });
-
       return {
         ...state,
         board: Object.assign([...state.board], {
@@ -46,9 +22,11 @@ const reducers = (state = initialState, action) => {
           }),
         }),
       };
+
     default:
       return state;
   }
 };
 
-export default undoable(reducers, { limit: false, groupBy: groupByActionTypes([PUT_DISKS]) });
+export default undoable(reducers,
+  { limit: false, groupBy: groupByActionTypes(PUT_DISKS), filter: includeAction(SET_BOARD) });

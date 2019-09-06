@@ -37,8 +37,8 @@ class Cell extends Component {
       if (this.props.currentPlayer === 'black') {
         this.props.setPosDisksBlack([x, y]);
       }
+      this.props.changeTurn();
       // this.props.setBoard(board);
-      await this.props.changeTurn();
     } else {
       this.props.setError('No can put your disk here');
       setTimeout(() => {

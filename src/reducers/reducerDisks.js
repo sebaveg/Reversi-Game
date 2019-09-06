@@ -1,4 +1,4 @@
-import undoable from 'redux-undo';
+import undoable, { excludeAction } from 'redux-undo';
 import {
   SET_POSITION_DISK_WHITE,
   SET_POSITION_DISK_BLACK,
@@ -23,4 +23,6 @@ const reducers = (state = initialState, action) => {
   }
 };
 
-export default undoable(reducers, { limit: false });
+export default undoable(reducers, {
+  limit: false, filter: excludeAction([SET_POSITION_DISK_WHITE, SET_POSITION_DISK_BLACK]),
+});
