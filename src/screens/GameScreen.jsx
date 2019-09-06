@@ -24,10 +24,10 @@ class GameScreen extends Component {
   winner() {
     // This can do better
     if (this.props.playerOne.totalDisks > this.props.playerTwo.totalDisks) {
-      this.props.setWinner(this.props.playerOne);
+      this.props.setWinner(this.props.playerOne.name);
     }
     if (this.props.playerOne.totalDisks < this.props.playerTwo.totalDisks) {
-      this.props.setWinner(this.props.playerTwo);
+      this.props.setWinner(this.props.playerTwo.name);
     }
     if (this.props.playerOne.totalDisks === this.props.playerTwo.totalDisks) {
       this.props.setWinner('Draw');

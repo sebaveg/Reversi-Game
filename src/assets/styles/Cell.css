@@ -14,6 +14,11 @@
   cursor: pointer;
   height: 70px;
   width: 70px;
+  cursor: cell;
+}
+.highlight:hover {
+  border: 1px solid gold;
+  color: gold;
 }
 .black, .white {
   height: 55px;
@@ -21,6 +26,7 @@
   border: 2px solid grey;
   border-radius: 50%;
   margin: 0 auto;
+  cursor: default;
 }
 
 .black {

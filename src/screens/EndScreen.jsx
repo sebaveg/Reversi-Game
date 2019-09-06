@@ -9,7 +9,7 @@ class EndScreen extends Component {
     return (
       <main className="main">
         <h3>Winner is:</h3>
-        <h1>{this.props.winner.name}</h1>
+        <h1>{this.props.winner}</h1>
         <Link to="/">
           <button className="button" type="button">Play again!</button>
         </Link>

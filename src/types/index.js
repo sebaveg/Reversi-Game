@@ -1,3 +1,5 @@
+// Types for reducers and actions
+
 export const ADD_DISKS_PLAYERS = 'add_disks_players';
 export const CHANGE_TURN = 'change_turn';
 export const CLICK_CELL = 'click_cell';

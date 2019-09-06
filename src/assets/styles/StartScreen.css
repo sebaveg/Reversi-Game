@@ -7,10 +7,11 @@
   font-size: calc(10px + 2vmin);
   justify-content: center;
   text-align: center;
+  max-width: 90%;
 }
 
 .formWrapper h5 {
-  margin: 3rem 0;
+  margin: 1.5rem 0;
 }
 
 .formWrapper form h2 {
@@ -18,14 +19,14 @@
 }
 
 .formWrapper form input {
-  font-size: 1.5rem;
+  font-size: 1em;
   padding: 10px 15px;
   min-width: 300px;
   text-align: center;
 }
 
 .form-group {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .button {
@@ -37,7 +38,7 @@
   cursor: pointer;
   font-size: 1.7rem;
   font-weight: bold;
-  margin-top: 3rem;
+  margin-top: 2rem;
   padding: 10px 0;
   text-shadow: 1px 0 #282c34;
   width: 100%;
