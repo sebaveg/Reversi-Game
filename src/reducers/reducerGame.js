@@ -1,5 +1,6 @@
 import {
   STARTED,
+  SET_ERROR,
   SET_WINNER,
   SET_ALLOWED_CELLS,
   ADD_DISKS_PLAYERS,
@@ -17,6 +18,11 @@ const reducers = (state = initialState, action) => {
         disksWhite: 2,
         disksBlack: 2,
         winner: '',
+      };
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     case SET_WINNER:
       return {
