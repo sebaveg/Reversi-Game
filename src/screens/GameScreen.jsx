@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { ActionCreators as UndoActionCreators } from 'redux-undo';
 import { connect } from 'react-redux';
 import { setStarted, setWinner } from '../actions';
 
@@ -35,7 +36,7 @@ class GameScreen extends Component {
 
   render() {
     const {
-      playerOne, playerTwo, error,
+      playerOne, playerTwo, error, historyDisks,
     } = this.props;
     return (
       <>
@@ -59,27 +60,47 @@ class GameScreen extends Component {
             />
           </div>
         </section>
-        <h2 className="title">Movement history</h2>
-        {/* <table cellPadding="5">
+
+        <h2 className="title">WHITE history</h2>
+        <table cellPadding="5">
           <thead>
             <tr>
               <th>Nª</th>
-              <th>Player</th>
               <th>Movement</th>
               <th>Come back action</th>
             </tr>
           </thead>
           <tbody>
-            {historyDisks.map((movement, i) => (
-              <tr key={i}>
-                <td>{i + 1}</td>
-                <td>{i % 2 === 0 ? 'White' : 'Black'}</td>
-                <td>{i % 2 === 0 ? 'positionWhite' : 'positionBlack'}</td>
+            {historyDisks.posDisksWhite.map((mov, i) => (
+              <tr>
+                <td>{i}</td>
+                <td>{`[x: ${mov[0]}, y: ${mov[1]}]`}</td>
                 <td><button type="button">Come back here</button></td>
               </tr>
             ))}
           </tbody>
-        </table> */}
+        </table>
+
+        <h2 className="title">BLACK history</h2>
+        <table cellPadding="5">
+          <thead>
+            <tr>
+              <th>Nª</th>
+              <th>Movement</th>
+              <th>Come back action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {historyDisks.posDisksBlack.map((mov, i) => (
+              <tr>
+                <td>{i}</td>
+                <td>{`[x: ${mov[0]}, y: ${mov[1]}]`}</td>
+                {/* <td><button type="button" onClick={this.onJump(i)}>Come back here</button></td> */}
+                <td><button type="button">Come back here</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </>
     );
   }
@@ -88,7 +109,7 @@ class GameScreen extends Component {
 const mapStateToProps = (state) => ({
   error: state.game.error,
   allowedCells: state.game.allowedCells,
-  // historyDisks: state.disks,
+  historyDisks: state.disks,
   playerOne: state.players.playerOne,
   playerTwo: state.players.playerTwo,
 });
@@ -96,6 +117,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setStarted,
   setWinner,
+  // onJump: () => UndoActionCreators.jump(),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

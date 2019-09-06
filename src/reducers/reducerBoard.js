@@ -1,4 +1,6 @@
-import undoable, { groupByActionTypes, excludeAction } from 'redux-undo';
+import undoable, {
+  groupByActionTypes, excludeAction, includeAction, combineFilters,
+} from 'redux-undo';
 import {
   PUT_DISKS,
   SET_BOARD,
@@ -38,5 +40,5 @@ export default undoable(reducers,
   {
     limit: false,
     groupBy: groupByActionTypes(PUT_DISKS),
-    filter: excludeAction(UPDATE_ALLOWED_CELLS),
+    filter: combineFilters(excludeAction(UPDATE_ALLOWED_CELLS), includeAction(SET_BOARD)),
   });

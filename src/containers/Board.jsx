@@ -131,7 +131,7 @@ class Board extends React.Component {
 
   async handleRedo() {
     await this.props.onRedo();
-    // await this.props.changeTurn();
+    this.props.changeTurn();
   }
 
   render() {
