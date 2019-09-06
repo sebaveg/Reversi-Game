@@ -1,67 +1,72 @@
 import {
-  SET_NAME_PLAYERS,
-  SET_COLOR_PLAYERS,
-  SET_BOARD,
-  SET_ALLOWED_CELLS,
-  STARTED,
+  ADD_DISKS_PLAYERS,
   CHANGE_TURN,
+  CLICK_CELL,
+  SET_ALLOWED_CELLS,
+  SET_BOARD,
+  SET_COLOR_PLAYERS,
+  SET_ERROR,
+  SET_NAME_PLAYERS,
   SET_POSITION_DISK_BLACK,
   SET_POSITION_DISK_WHITE,
-  ADD_DISKS_PLAYERS,
-  PUT_DISKS,
-  CLICK_CELL,
   SET_WINNER,
-  SET_ERROR,
+  STARTED,
+  PUT_DISKS,
+  UPDATE_ALLOWED_CELLS,
 } from '../types/index';
 
-export const setNamePlayers = (payload) => ({
-  type: SET_NAME_PLAYERS,
+export const addDisksPlayers = (payload) => ({
+  type: ADD_DISKS_PLAYERS,
   payload,
 });
-export const setColorPlayers = (payload) => ({
-  type: SET_COLOR_PLAYERS,
-  payload,
+export const changeTurn = () => ({
+  type: CHANGE_TURN,
 });
-export const setStarted = (payload) => ({
-  type: STARTED,
-  payload,
-});
-export const setBoard = (payload) => ({
-  type: SET_BOARD,
+export const clickCell = (payload) => ({
+  type: CLICK_CELL,
   payload,
 });
 export const setAllowedCells = (payload) => ({
   type: SET_ALLOWED_CELLS,
   payload,
 });
-export const changeTurn = () => ({
-  type: CHANGE_TURN,
+export const setBoard = (payload) => ({
+  type: SET_BOARD,
+  payload,
 });
-export const setPosDisksWhite = (payload) => ({
-  type: SET_POSITION_DISK_WHITE,
+export const setColorPlayers = (payload) => ({
+  type: SET_COLOR_PLAYERS,
+  payload,
+});
+export const setError = (payload) => ({
+  type: SET_ERROR,
+  payload,
+});
+export const setNamePlayers = (payload) => ({
+  type: SET_NAME_PLAYERS,
   payload,
 });
 export const setPosDisksBlack = (payload) => ({
   type: SET_POSITION_DISK_BLACK,
   payload,
 });
-export const addDisksPlayers = (payload) => ({
-  type: ADD_DISKS_PLAYERS,
-  payload,
-});
-export const clickCell = (payload) => ({
-  type: CLICK_CELL,
-  payload,
-});
-export const putDisks = (payload) => ({
-  type: PUT_DISKS,
+export const setPosDisksWhite = (payload) => ({
+  type: SET_POSITION_DISK_WHITE,
   payload,
 });
 export const setWinner = (payload) => ({
   type: SET_WINNER,
   payload,
 });
-export const setError = (payload) => ({
-  type: SET_ERROR,
+export const setStarted = (payload) => ({
+  type: STARTED,
+  payload,
+});
+export const putDisks = (payload) => ({
+  type: PUT_DISKS,
+  payload,
+});
+export const updateAllowedCells = (payload) => ({
+  type: UPDATE_ALLOWED_CELLS,
   payload,
 });

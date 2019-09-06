@@ -35,7 +35,7 @@ class GameScreen extends Component {
 
   render() {
     const {
-      playerOne, playerTwo, error, historyDisks,
+      playerOne, playerTwo, error,
     } = this.props;
     return (
       <>
@@ -60,7 +60,7 @@ class GameScreen extends Component {
           </div>
         </section>
         <h2 className="title">Movement history</h2>
-        <table cellPadding="5">
+        {/* <table cellPadding="5">
           <thead>
             <tr>
               <th>Nª</th>
@@ -79,7 +79,7 @@ class GameScreen extends Component {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
       </>
     );
   }
@@ -88,7 +88,7 @@ class GameScreen extends Component {
 const mapStateToProps = (state) => ({
   error: state.game.error,
   allowedCells: state.game.allowedCells,
-  historyDisks: state.disks.past,
+  // historyDisks: state.disks,
   playerOne: state.players.playerOne,
   playerTwo: state.players.playerTwo,
 });

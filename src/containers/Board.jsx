@@ -2,10 +2,11 @@ import React from 'react';
 import { ActionCreators as UndoActionCreators } from 'redux-undo';
 import { connect } from 'react-redux';
 import {
-  setBoard,
-  setAllowedCells,
   addDisksPlayers,
   changeTurn,
+  setBoard,
+  setAllowedCells,
+  updateAllowedCells,
 } from '../actions';
 
 import BoardLayout from '../components/Board';
@@ -33,12 +34,10 @@ class Board extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const passTurn = this.props.currentPlayer !== prevProps.currentPlayer
-    || this.props.posDiskWhite.length !== prevProps.posDiskWhite.length
-    || this.props.posDiskBlack.length !== prevProps.posDiskBlack.length;
+    const passTurn = this.props.currentPlayer !== prevProps.currentPlayer;
     if (passTurn) {
       const newBoard = this.allowedCellsAndCountDisks(this.props.board);
-      this.props.setBoard(newBoard); // dispatch action
+      this.props.updateAllowedCells(newBoard); // dispatch action
     }
   }
 
@@ -127,7 +126,7 @@ class Board extends React.Component {
 
   async handleUndo() {
     await this.props.onUndo();
-    // await this.props.changeTurn();
+    this.props.changeTurn();
   }
 
   async handleRedo() {
@@ -152,8 +151,8 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => ({
   board: state.board.present.board,
-  posDiskWhite: state.disks.present.posDisksWhite,
-  posDiskBlack: state.disks.present.posDisksBlack,
+  posDiskWhite: state.disks.posDisksWhite,
+  posDiskBlack: state.disks.posDisksBlack,
   currentPlayer: state.players.currentPlayer,
   // Redux uno/redo
   canUndo: state.board.past.length > 1,
@@ -161,10 +160,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  setBoard,
-  setAllowedCells,
   addDisksPlayers,
   changeTurn,
+  setAllowedCells,
+  setBoard,
+  updateAllowedCells,
   onUndo: () => UndoActionCreators.undo(),
   onRedo: () => UndoActionCreators.redo(),
 };
