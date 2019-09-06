@@ -34,7 +34,7 @@ class Board extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const passTurn = this.props.currentPlayer !== prevProps.currentPlayer;
+    const passTurn = this.props.currentPlayer !== prevProps.currentPlayer && (this.props.posDiskBlack.length !== prevProps.posDiskBlack.length || this.props.posDiskWhite.length !== prevProps.posDiskWhite.length);
     if (passTurn) {
       const newBoard = this.allowedCellsAndCountDisks(this.props.board);
       this.props.updateAllowedCells(newBoard); // dispatch action
@@ -127,11 +127,16 @@ class Board extends React.Component {
   async handleUndo() {
     await this.props.onUndo();
     this.props.changeTurn();
+    const newBoard = this.allowedCellsAndCountDisks(this.props.board);
+    this.props.setBoard(newBoard);
+    
   }
 
   async handleRedo() {
     await this.props.onRedo();
     this.props.changeTurn();
+    const newBoard = this.allowedCellsAndCountDisks(this.props.board);
+    this.props.setBoard(newBoard);
   }
 
   render() {
@@ -155,7 +160,7 @@ const mapStateToProps = (state) => ({
   posDiskBlack: state.disks.posDisksBlack,
   currentPlayer: state.players.currentPlayer,
   // Redux uno/redo
-  canUndo: state.board.past.length > 1,
+  canUndo: state.board.past.length > 0,
   canRedo: state.board.future.length > 0,
 });
 

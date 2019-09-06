@@ -40,5 +40,6 @@ export default undoable(reducers,
   {
     limit: false,
     groupBy: groupByActionTypes(PUT_DISKS),
-    filter: combineFilters(excludeAction(UPDATE_ALLOWED_CELLS), includeAction(SET_BOARD)),
+    filter: combineFilters(includeAction(UPDATE_ALLOWED_CELLS), excludeAction(SET_BOARD)),
+    ignoreInitialState: false
   });
