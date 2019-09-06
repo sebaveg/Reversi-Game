@@ -1,8 +1,8 @@
 export default {
   started: false,
   error: '',
-  allowedCells: 4,
-  disksWhite: 2,
-  disksBlack: 2,
+  allowedCells: 0,
+  disksWhite: 0,
+  disksBlack: 0,
   winner: '',
 };
