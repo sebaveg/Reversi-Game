@@ -16,7 +16,6 @@ const Players = (props) => {
       <div className={`circle${color}`} />
       <h3>Total Disks</h3>
       <div>{total}</div>
-      {/* Turn */}
       {color === currentPlayer
         ? (
           <>

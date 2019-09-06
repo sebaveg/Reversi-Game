@@ -130,6 +130,11 @@ class Board extends React.Component {
     // await this.props.changeTurn();
   }
 
+  async handleRedo() {
+    await this.props.onRedo();
+    // await this.props.changeTurn();
+  }
+
   render() {
     return (
       <>
@@ -137,7 +142,7 @@ class Board extends React.Component {
         <button type="button" onClick={this.handleUndo.bind(this)} disabled={!this.props.canUndo}>
           Undo
         </button>
-        <button type="button" onClick={this.props.onRedo} disabled={!this.props.canRedo}>
+        <button type="button" onClick={this.handleRedo.bind(this)} disabled={!this.props.canRedo}>
           Redo
         </button>
       </>

@@ -35,12 +35,12 @@ class GameScreen extends Component {
 
   render() {
     const {
-      playerOne, playerTwo, error,
+      playerOne, playerTwo, error, historyDisks,
     } = this.props;
     return (
       <>
         {error ? <p className="error">{error}</p> : null}
-        <div className="flexContainer">
+        <section className="flexContainer">
           <div className="flexItem">
             <Players
               name={playerOne.name}
@@ -58,8 +58,7 @@ class GameScreen extends Component {
               total={playerTwo.totalDisks}
             />
           </div>
-        </div>
-        {/*
+        </section>
         <h2 className="title">Movement history</h2>
         <table cellPadding="5">
           <thead>
@@ -80,7 +79,7 @@ class GameScreen extends Component {
               </tr>
             ))}
           </tbody>
-        </table> */}
+        </table>
       </>
     );
   }
@@ -89,7 +88,7 @@ class GameScreen extends Component {
 const mapStateToProps = (state) => ({
   error: state.game.error,
   allowedCells: state.game.allowedCells,
-  // historyDisks: state.disks.past,
+  historyDisks: state.disks.past,
   playerOne: state.players.playerOne,
   playerTwo: state.players.playerTwo,
 });
@@ -97,7 +96,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setStarted,
   setWinner,
-  // onJump: (i) => UndoActionCreators.jumpToPast(i),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

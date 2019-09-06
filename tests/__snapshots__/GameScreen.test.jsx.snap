@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GameScreen /> rendering renders correctly 1`] = `
+exports[`<GameScreen /> Container  +++ capturing snapshot of home 1`] = `
 <ContextProvider
   value={
     Object {

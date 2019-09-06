@@ -4,22 +4,30 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import Cell from '../src/containers/Cell';
 
+const initialState = {
+  error: '',
+  board: {
+    past: [],
+    present: {
+      board: [], // Array 2D
+    },
+    future: [],
+  },
+  players: {
+    currentPlayer: 'white',
+  },
+};
+
 const mockStore = configureMockStore();
-const store = mockStore({});
+let store;
+let container;
 
-// let wrapper;
-// beforeEach(() => {
-//   wrapper = shallow(<GameScreen />);
-// });
-
-const wrapper = shallow(
-  <Provider store={store}>
-    <Cell />
-  </Provider>,
-);
-
-describe('<GameScreen /> rendering', () => {
-  it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+describe('<Cell /> Container', () => {
+  beforeEach(() => {
+    store = mockStore(initialState);
+    container = shallow(<Provider store={store}><Cell /></Provider>);
+  });
+  it(' +++ capturing snapshot of home', () => {
+    expect(container).toMatchSnapshot();
   });
 });

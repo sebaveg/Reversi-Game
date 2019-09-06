@@ -4,22 +4,41 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import GameScreen from '../src/screens/GameScreen';
 
+const initialState = {
+  game: {
+    error: '',
+    allowedCells: '',
+  },
+  players: {
+    playerOne: '',
+    playerTwo: '',
+  },
+};
+
 const mockStore = configureMockStore();
-const store = mockStore({});
+let store;
+let container;
+let wrapper;
 
-// let wrapper;
-// beforeEach(() => {
-//   wrapper = shallow(<GameScreen />);
-// });
-
-const wrapper = shallow(
-  <Provider store={store}>
-    <GameScreen />
-  </Provider>,
-);
-
-describe('<GameScreen /> rendering', () => {
-  it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+describe('<GameScreen /> Container', () => {
+  beforeEach(() => {
+    store = mockStore(initialState);
+    container = shallow(<Provider store={store}><GameScreen /></Provider>);
+  });
+  it(' +++ capturing snapshot of home', () => {
+    expect(container).toMatchSnapshot();
   });
 });
+
+// describe('<GameScreen /> Container', () => {
+//   beforeEach(() => {
+//     store = mockStore(initialState);
+//     wrapper = mount(<Provider store={store}><GameScreen /></Provider>);
+//   });
+//   it(' +++ should render one <section>', () => {
+//     expect(wrapper.find('section')).toHaveLength(1);
+//   });
+//   it(' +++ should render one <div>', () => {
+//     expect(wrapper.find('div')).toHaveLength(3);
+//   });
+// });

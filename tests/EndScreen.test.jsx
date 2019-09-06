@@ -4,22 +4,42 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import EndScreen from '../src/screens/EndScreen';
 
+const initialState = {
+  game: {
+    winner: 'Seba',
+  },
+};
+
 const mockStore = configureMockStore();
-const store = mockStore({});
+let store;
+let container;
+let wrapper;
 
-// let wrapper;
-// beforeEach(() => {
-//   wrapper = shallow(<GameScreen />);
-// });
-
-const wrapper = shallow(
-  <Provider store={store}>
-    <EndScreen />
-  </Provider>,
-);
-
-describe('<GameScreen /> rendering', () => {
-  it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+describe('<Cell /> Container', () => {
+  beforeEach(() => {
+    store = mockStore(initialState);
+    container = shallow(<Provider store={store}><EndScreen /></Provider>);
+  });
+  it(' +++ capturing snapshot of home', () => {
+    expect(container).toMatchSnapshot();
   });
 });
+
+// describe('<EndScreen /> Container', () => {
+//   beforeEach(() => {
+//     store = mockStore(initialState);
+//     wrapper = mount(<Provider store={store}><EndScreen /></Provider>);
+//   });
+//   it(' +++ should render one <main>', () => {
+//     expect(wrapper.find('main')).toHaveLength(1);
+//   });
+//   it(' +++ should render one <h3>', () => {
+//     expect(wrapper.find('h3')).toHaveLength(1);
+//   });
+//   it(' +++ should render one <h1>', () => {
+//     expect(wrapper.find('h1')).toHaveLength(1);
+//   });
+//   it(' +++ should render one <button>', () => {
+//     expect(wrapper.find('button')).toHaveLength(1);
+//   });
+// });

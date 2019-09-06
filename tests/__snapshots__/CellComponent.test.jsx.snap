@@ -4,7 +4,8 @@ exports[`<GameScreen /> rendering renders correctly 1`] = `
 <td
   className="cell"
 >
-  ID
-  <div />
+  <div
+    className="black"
+  />
 </td>
 `;
