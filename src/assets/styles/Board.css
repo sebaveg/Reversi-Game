@@ -6,3 +6,24 @@
   min-width: 280px;
   margin-top: 1em;
 }
+
+.wrapper-btn-undo-redo{
+  display: flex;
+  justify-content: space-between;
+  margin-top: .5em;
+}
+
+.wrapper-btn-undo-redo button{
+  background-color: #8756ca;
+  border: 1px solid #8756ca;
+  box-shadow: 0 0 5px -2px #fff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+
+.wrapper-btn-undo-redo button:disabled {
+  visibility: hidden;
+}

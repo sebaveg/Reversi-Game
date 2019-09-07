@@ -146,12 +146,14 @@ class Board extends React.Component {
     return (
       <>
         <BoardLayout board={this.props.board} />
-        <button type="button" onClick={this.handleUndo.bind(this)} disabled={!this.props.canUndo}>
-          Undo
-        </button>
-        <button type="button" onClick={this.handleRedo.bind(this)} disabled={!this.props.canRedo}>
-          Redo
-        </button>
+        <div className="wrapper-btn-undo-redo">
+          <button type="button" onClick={this.handleUndo.bind(this)} disabled={!this.props.canUndo}>
+            Undo
+          </button>
+          <button type="button" onClick={this.handleRedo.bind(this)} disabled={!this.props.canRedo}>
+            Redo
+          </button>
+        </div>
       </>
     );
   }
