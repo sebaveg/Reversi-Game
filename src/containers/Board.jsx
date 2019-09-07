@@ -6,6 +6,8 @@ import {
   changeTurn,
   setBoard,
   setAllowedCells,
+  setPosDisksWhite,
+  setPosDisksBlack,
   updateAllowedCells,
 } from '../actions';
 
@@ -34,7 +36,9 @@ class Board extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const passTurn = this.props.currentPlayer !== prevProps.currentPlayer && (this.props.posDiskBlack.length !== prevProps.posDiskBlack.length || this.props.posDiskWhite.length !== prevProps.posDiskWhite.length);
+    const passTurn = this.props.currentPlayer !== prevProps.currentPlayer
+      && (this.props.posDiskBlack.length !== prevProps.posDiskBlack.length
+      || this.props.posDiskWhite.length !== prevProps.posDiskWhite.length);
     if (passTurn) {
       const newBoard = this.allowedCellsAndCountDisks(this.props.board);
       this.props.updateAllowedCells(newBoard); // dispatch action
@@ -67,7 +71,7 @@ class Board extends React.Component {
       board[pos[0]][pos[1]].disk = 'black'; // Black
     });
     const newBoard = this.allowedCellsAndCountDisks(board);
-    await this.props.setBoard(newBoard); // dispatch action
+    await this.props.updateAllowedCells(newBoard); // dispatch action
   }
 
   // says what cells are enable for clicks in current turn
@@ -129,7 +133,6 @@ class Board extends React.Component {
     this.props.changeTurn();
     const newBoard = this.allowedCellsAndCountDisks(this.props.board);
     this.props.setBoard(newBoard);
-    
   }
 
   async handleRedo() {
@@ -160,7 +163,7 @@ const mapStateToProps = (state) => ({
   posDiskBlack: state.disks.posDisksBlack,
   currentPlayer: state.players.currentPlayer,
   // Redux uno/redo
-  canUndo: state.board.past.length > 0,
+  canUndo: state.board.past.length > 1,
   canRedo: state.board.future.length > 0,
 });
 
@@ -169,6 +172,8 @@ const mapDispatchToProps = {
   changeTurn,
   setAllowedCells,
   setBoard,
+  setPosDisksWhite,
+  setPosDisksBlack,
   updateAllowedCells,
   onUndo: () => UndoActionCreators.undo(),
   onRedo: () => UndoActionCreators.redo(),

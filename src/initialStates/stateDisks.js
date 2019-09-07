@@ -3,7 +3,7 @@ export default {
     [3, 3],
     [4, 4],
   ],
-  posDisksBlack: [ // Position (x,y) of black disks
+  posDisksBlack: [
     [3, 4],
     [4, 3],
   ],
