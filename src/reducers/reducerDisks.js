@@ -1,4 +1,5 @@
 import {
+  RESET,
   SET_POSITION_DISK_WHITE,
   SET_POSITION_DISK_BLACK,
 } from '../types/index';
@@ -7,6 +8,12 @@ import initialState from '../initialStates/stateDisks';
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
+    case RESET:
+      return {
+        ...state,
+        posDisksWhite: initialState.posDisksWhite,
+        posDisksBlack: initialState.posDisksBlack,
+      };
     case SET_POSITION_DISK_WHITE:
       return {
         ...state,

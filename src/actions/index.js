@@ -2,6 +2,7 @@ import {
   ADD_DISKS_PLAYERS,
   CHANGE_TURN,
   CLICK_CELL,
+  RESET,
   SET_ALLOWED_CELLS,
   SET_BOARD,
   SET_COLOR_PLAYERS,
@@ -24,6 +25,10 @@ export const changeTurn = () => ({
 });
 export const clickCell = (payload) => ({
   type: CLICK_CELL,
+  payload,
+});
+export const reset = (payload) => ({
+  type: RESET,
   payload,
 });
 export const setAllowedCells = (payload) => ({
