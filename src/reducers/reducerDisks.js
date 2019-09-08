@@ -1,6 +1,7 @@
 import undoable from 'redux-undo';
 import {
   RESET,
+  SET_POSITION_DISK,
   SET_POSITION_DISK_WHITE,
   SET_POSITION_DISK_BLACK,
 } from '../types/index';
@@ -14,6 +15,17 @@ const reducers = (state = initialState, action) => {
         ...state,
         posDisksWhite: initialState.posDisksWhite,
         posDisksBlack: initialState.posDisksBlack,
+      };
+    case SET_POSITION_DISK:
+      return {
+        ...state,
+        posDisks: [
+          ...state.posDisks,
+          {
+            pos: action.payload.pos,
+            color: action.payload.color,
+          },
+        ],
       };
     case SET_POSITION_DISK_WHITE:
       return {

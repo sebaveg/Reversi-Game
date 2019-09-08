@@ -37,6 +37,15 @@
   flex-wrap: nowrap;
 }
 
+.table-history {
+  border: 1px solid #fff;
+}
+
+.table-history td,
+.table-history th {
+  border: 1px solid white;
+}
+
 @media (max-width: 910px) {
   .flexContainer {
     flex-wrap: wrap;

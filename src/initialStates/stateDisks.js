@@ -8,4 +8,7 @@ export default {
     [4, 3],
   ],
 
+  // save the same above but in a single array and without initialState
+  posDisks: [],
+
 };

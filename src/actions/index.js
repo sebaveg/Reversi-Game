@@ -7,6 +7,7 @@ import {
   SET_COLOR_PLAYERS,
   SET_ERROR,
   SET_NAME_PLAYERS,
+  SET_POSITION_DISK,
   SET_POSITION_DISK_BLACK,
   SET_POSITION_DISK_WHITE,
   SET_WINNER,
@@ -44,6 +45,10 @@ export const setError = (payload) => ({
 });
 export const setNamePlayers = (payload) => ({
   type: SET_NAME_PLAYERS,
+  payload,
+});
+export const setPositionDisk = (payload) => ({
+  type: SET_POSITION_DISK,
   payload,
 });
 export const setPosDisksBlack = (payload) => ({

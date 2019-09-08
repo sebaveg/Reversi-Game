@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   changeTurn,
   setError,
+  setPositionDisk,
   setPosDisksWhite,
   setPosDisksBlack,
   putDisks,
@@ -23,9 +24,11 @@ class Cell extends Component {
       });
       if (this.props.currentPlayer === 'white') {
         this.props.setPosDisksWhite([x, y]);
+        this.props.setPositionDisk({ pos: [x, y], color: 'white' });
       }
       if (this.props.currentPlayer === 'black') {
         this.props.setPosDisksBlack([x, y]);
+        this.props.setPositionDisk({ pos: [x, y], color: 'black' });
       }
       this.props.changeTurn();
     } else {
@@ -57,6 +60,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   changeTurn,
   setError,
+  setPositionDisk,
   setPosDisksWhite,
   setPosDisksBlack,
   putDisks,

@@ -8,6 +8,7 @@ export const SET_BOARD = 'set_board';
 export const SET_COLOR_PLAYERS = 'set_color_players';
 export const SET_ERROR = 'set_error';
 export const SET_NAME_PLAYERS = 'set_name_players';
+export const SET_POSITION_DISK = 'set_position_disk';
 export const SET_POSITION_DISK_BLACK = 'set_position_disk_black';
 export const SET_POSITION_DISK_WHITE = 'set_position_disk_white';
 export const SET_WINNER = 'set_winner';

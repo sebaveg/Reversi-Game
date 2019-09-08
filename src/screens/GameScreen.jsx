@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { ActionCreators as UndoActionCreators } from 'redux-undo';
+import { ActionCreators } from 'redux-undo';
 import { connect } from 'react-redux';
 import { setStarted, setWinner } from '../actions';
 
@@ -36,9 +36,26 @@ class GameScreen extends Component {
     }
   }
 
+  handleJump() {
+    console.log('JUMP');
+    console.log(this.pos);
+    this.self.props.onJump(this.pos);
+  }
+
+  historyMovement() {
+    return this.props.historyDisks.posDisks.map((mov, i) => (
+      <tr key={`${mov.pos[0]}${mov.pos[1]}`}>
+        <td>{i}</td>
+        <td><div className={mov.color === 'white' ? 'white' : 'black'} /></td>
+        <td>{`${this.cols[mov.pos[1]]}${this.rows[mov.pos[0]]}`}</td>
+        <td><button type="button" onClick={this.handleJump.bind({ pos: i, self: this })}>Come back here</button></td>
+      </tr>
+    ));
+  }
+
   render() {
     const {
-      playerOne, playerTwo, error, historyDisks,
+      playerOne, playerTwo, error,
     } = this.props;
     return (
       <>
@@ -63,48 +80,21 @@ class GameScreen extends Component {
           </div>
         </section>
 
+        <h2 className="title">MOVIMENTS</h2>
         <div className="wrapper-history">
-
-          <table cellPadding="5">
-            {/* <h2 className="title">WHITE history</h2> */}
+          <table className="table-history" cellPadding="5">
             <thead>
               <tr key="0">
                 <th>Nª</th>
-                <th>Movement</th>
+                <th>Color Disk</th>
+                <th>Position</th>
                 <th>Come back</th>
               </tr>
             </thead>
             <tbody>
-              {historyDisks.posDisksWhite.map((mov, i) => (
-                <tr key={`${mov[0]}${mov[1]}`}>
-                  <td>{i}</td>
-                  <td>{`${this.cols[mov[1]]}${this.rows[mov[0]]}`}</td>
-                  <td><button type="button">Come back here</button></td>
-                </tr>
-              ))}
+              {this.historyMovement()}
             </tbody>
           </table>
-
-          <table cellPadding="5">
-            {/* <h2 className="title">BLACK history</h2> */}
-            <thead>
-              <tr key="0">
-                <th>Nª</th>
-                <th>Movement</th>
-                <th>Come back</th>
-              </tr>
-            </thead>
-            <tbody>
-              {historyDisks.posDisksBlack.map((mov, i) => (
-                <tr key={`${mov[0]}${mov[1]}`}>
-                  <td>{i}</td>
-                  <td>{`${this.cols[mov[1]]}${this.rows[mov[0]]}`}</td>
-                  <td><button type="button">Come back here</button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
         </div>
       </>
     );
@@ -122,7 +112,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setStarted,
   setWinner,
-  // onJump: () => UndoActionCreators.jump(),
+  onJump: (i) => ActionCreators.jumpToPast(i),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);
