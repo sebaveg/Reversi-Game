@@ -11,6 +11,8 @@ import '../assets/styles/Game.css';
 class GameScreen extends Component {
   constructor(props) {
     super(props);
+    this.rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    this.cols = ['1', '2', '3', '4', '5', '6', '7', '8'];
     props.setStarted(); // dispatch action
   }
 
@@ -76,7 +78,7 @@ class GameScreen extends Component {
               {historyDisks.posDisksWhite.map((mov, i) => (
                 <tr key={`${mov[0]}${mov[1]}`}>
                   <td>{i}</td>
-                  <td>{`[x: ${mov[0]}, y: ${mov[1]}]`}</td>
+                  <td>{`${this.cols[mov[1]]}${this.rows[mov[0]]}`}</td>
                   <td><button type="button">Come back here</button></td>
                 </tr>
               ))}
@@ -96,7 +98,7 @@ class GameScreen extends Component {
               {historyDisks.posDisksBlack.map((mov, i) => (
                 <tr key={`${mov[0]}${mov[1]}`}>
                   <td>{i}</td>
-                  <td>{`[x: ${mov[0]}, y: ${mov[1]}]`}</td>
+                  <td>{`${this.cols[mov[1]]}${this.rows[mov[0]]}`}</td>
                   <td><button type="button">Come back here</button></td>
                 </tr>
               ))}
