@@ -1,7 +1,9 @@
 import undoable, {
   groupByActionTypes, excludeAction, includeAction, combineFilters,
 } from 'redux-undo';
+
 import {
+  CHANGE_TURN,
   PUT_DISKS,
   SET_BOARD,
   UPDATE_ALLOWED_CELLS,
@@ -30,7 +32,11 @@ const reducers = (state = initialState, action) => {
         ...state,
         board: action.payload,
       };
-
+    case CHANGE_TURN:
+      return {
+        ...state,
+        currentPlayer: state.currentPlayer === 'white' ? 'black' : 'white',
+      };
     default:
       return state;
   }
@@ -40,6 +46,6 @@ export default undoable(reducers,
   {
     limit: false,
     groupBy: groupByActionTypes(PUT_DISKS),
-    filter: combineFilters(includeAction(UPDATE_ALLOWED_CELLS), excludeAction(SET_BOARD)),
+    filter: combineFilters(excludeAction(UPDATE_ALLOWED_CELLS), includeAction(SET_BOARD)),
     ignoreInitialState: false,
   });

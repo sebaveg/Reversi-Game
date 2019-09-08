@@ -3,7 +3,7 @@ import {
   SET_NAME_PLAYERS,
   SET_COLOR_PLAYERS,
   ADD_DISKS_PLAYERS,
-  CHANGE_TURN,
+  // CHANGE_TURN,
 } from '../types/index';
 
 import initialState from '../initialStates/statePlayer';
@@ -59,11 +59,11 @@ const players = (state = initialState, action) => {
           totalDisks: action.payload.white,
         },
       };
-    case CHANGE_TURN:
-      return {
-        ...state,
-        currentPlayer: state.currentPlayer === 'white' ? 'black' : 'white',
-      };
+    // case CHANGE_TURN:
+    //   return {
+    //     ...state,
+    //     currentPlayer: state.currentPlayer === 'white' ? 'black' : 'white',
+    //   };
     default:
       return state;
   }

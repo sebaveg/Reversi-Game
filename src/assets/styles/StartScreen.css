@@ -36,10 +36,10 @@
   box-shadow: 0 0 10px -3px white;
   color: white;
   cursor: pointer;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-top: 2rem;
-  padding: 10px 0;
+  padding: 12px 0;
   text-shadow: 1px 0 #282c34;
   width: 100%;
 }

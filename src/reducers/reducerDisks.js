@@ -1,3 +1,4 @@
+import undoable from 'redux-undo';
 import {
   RESET,
   SET_POSITION_DISK_WHITE,
@@ -29,4 +30,4 @@ const reducers = (state = initialState, action) => {
   }
 };
 
-export default reducers;
+export default undoable(reducers, { limit: false });

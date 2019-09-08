@@ -66,7 +66,7 @@ class GameScreen extends Component {
           <table cellPadding="5">
             {/* <h2 className="title">WHITE history</h2> */}
             <thead>
-              <tr>
+              <tr key="0">
                 <th>Nª</th>
                 <th>Movement</th>
                 <th>Come back</th>
@@ -74,7 +74,7 @@ class GameScreen extends Component {
             </thead>
             <tbody>
               {historyDisks.posDisksWhite.map((mov, i) => (
-                <tr>
+                <tr key={`${mov[0]}${mov[1]}`}>
                   <td>{i}</td>
                   <td>{`[x: ${mov[0]}, y: ${mov[1]}]`}</td>
                   <td><button type="button">Come back here</button></td>
@@ -86,7 +86,7 @@ class GameScreen extends Component {
           <table cellPadding="5">
             {/* <h2 className="title">BLACK history</h2> */}
             <thead>
-              <tr>
+              <tr key="0">
                 <th>Nª</th>
                 <th>Movement</th>
                 <th>Come back</th>
@@ -94,10 +94,9 @@ class GameScreen extends Component {
             </thead>
             <tbody>
               {historyDisks.posDisksBlack.map((mov, i) => (
-                <tr>
+                <tr key={`${mov[0]}${mov[1]}`}>
                   <td>{i}</td>
                   <td>{`[x: ${mov[0]}, y: ${mov[1]}]`}</td>
-                  {/* <td><button type="button" onClick={this.onJump(i)}>Come back here</button></td> */}
                   <td><button type="button">Come back here</button></td>
                 </tr>
               ))}
@@ -113,7 +112,7 @@ class GameScreen extends Component {
 const mapStateToProps = (state) => ({
   error: state.game.error,
   allowedCells: state.game.allowedCells,
-  historyDisks: state.disks,
+  historyDisks: state.disks.present,
   playerOne: state.players.playerOne,
   playerTwo: state.players.playerTwo,
 });

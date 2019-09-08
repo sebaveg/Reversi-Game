@@ -36,12 +36,15 @@ class Board extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const passTurn = this.props.currentPlayer !== prevProps.currentPlayer
-      && (this.props.posDiskBlack.length !== prevProps.posDiskBlack.length
-      || this.props.posDiskWhite.length !== prevProps.posDiskWhite.length);
-    if (passTurn) {
-      const newBoard = this.allowedCellsAndCountDisks(this.props.board);
-      this.props.updateAllowedCells(newBoard); // dispatch action
+    if (this.props.currentPlayer !== prevProps.currentPlayer) {
+      // eslint-disable-next-line max-len
+      if (this.props.posDiskBlack.length > prevProps.posDiskBlack.length || this.props.posDiskWhite.length > prevProps.posDiskWhite.length) {
+        const newBoard = this.allowedCellsAndCountDisks(this.props.board);
+        this.props.setBoard(newBoard); // dispatch action
+      } else {
+        const newBoard = this.allowedCellsAndCountDisks(this.props.board);
+        this.props.updateAllowedCells(newBoard); // dispatch action
+      }
     }
   }
 
@@ -71,7 +74,7 @@ class Board extends React.Component {
       board[pos[0]][pos[1]].disk = 'black'; // Black
     });
     const newBoard = this.allowedCellsAndCountDisks(board);
-    await this.props.updateAllowedCells(newBoard); // dispatch action
+    await this.props.setBoard(newBoard); // dispatch action
   }
 
   // says what cells are enable for clicks in current turn
@@ -129,17 +132,11 @@ class Board extends React.Component {
   }
 
   async handleUndo() {
-    await this.props.onUndo();
-    this.props.changeTurn();
-    const newBoard = this.allowedCellsAndCountDisks(this.props.board);
-    this.props.setBoard(newBoard);
+    this.props.onUndo();
   }
 
   async handleRedo() {
-    await this.props.onRedo();
-    this.props.changeTurn();
-    const newBoard = this.allowedCellsAndCountDisks(this.props.board);
-    this.props.setBoard(newBoard);
+    this.props.onRedo();
   }
 
   render() {
@@ -161,11 +158,11 @@ class Board extends React.Component {
 
 const mapStateToProps = (state) => ({
   board: state.board.present.board,
-  posDiskWhite: state.disks.posDisksWhite,
-  posDiskBlack: state.disks.posDisksBlack,
-  currentPlayer: state.players.currentPlayer,
+  posDiskWhite: state.disks.present.posDisksWhite,
+  posDiskBlack: state.disks.present.posDisksBlack,
+  currentPlayer: state.board.present.currentPlayer,
   // Redux uno/redo
-  canUndo: state.board.past.length > 1,
+  canUndo: state.board.past.length > 1, // First element initBoard
   canRedo: state.board.future.length > 0,
 });
 
