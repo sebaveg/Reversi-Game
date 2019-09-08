@@ -2,7 +2,6 @@
 
 export const ADD_DISKS_PLAYERS = 'add_disks_players';
 export const CHANGE_TURN = 'change_turn';
-export const CLICK_CELL = 'click_cell';
 export const RESET = 'reset';
 export const SET_ALLOWED_CELLS = 'set_allowed_cells';
 export const SET_BOARD = 'set_board';

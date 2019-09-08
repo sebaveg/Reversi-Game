@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlayerComponent /> component renders correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Players)
+    color="white"
+    name="seba"
+  >
+    <Players
+      changeTurn={[Function]}
+      color="white"
+      name="seba"
+    >
+      <div
+        className="wrapperPlayers"
+      >
+        <h2>
+          seba
+        </h2>
+        <div
+          className="circlewhite"
+        />
+        <h3>
+          Total Disks
+        </h3>
+        <div />
+      </div>
+    </Players>
+  </Connect(Players)>
+</Provider>
+`;
