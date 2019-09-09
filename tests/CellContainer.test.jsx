@@ -9,13 +9,6 @@ import CellLayout from '../src/components/Cell';
 
 const clickFn = jest.fn();
 
-// Mock the actions we expect to be called
-actions.changeTurn = jest.fn();
-actions.setError = jest.fn();
-actions.setPositionDisk = jest.fn();
-actions.setPosDisksWhite = jest.fn();
-actions.setPosDisks = jest.fn();
-
 const initialState = {
   error: '',
   board: {
@@ -37,6 +30,19 @@ const initialState = {
   },
 };
 
+const props = {
+  disk: 'white',
+  allowed: [0, 0],
+  position: [0, 0],
+  onClick: clickFn,
+  // Mock the actions expect to be called
+  changeTurn: jest.fn(),
+  setError: jest.fn(),
+  setPositionDisk: jest.fn(),
+  setPosDisksWhite: jest.fn(),
+  setPosDisks: jest.fn(),
+};
+
 const mockStore = configureMockStore();
 
 const setUp = (props = {}) => {
@@ -49,13 +55,6 @@ const setUp = (props = {}) => {
 describe('<Cell /> Container', () => {
   let wrapper;
   beforeEach(() => {
-    const props = {
-      disk: 'white',
-      allowed: [0, 0],
-      dispatch: jest.fn(),
-      position: [0, 0],
-      onClick: clickFn,
-    };
     wrapper = setUp(props);
   });
 
@@ -80,15 +79,8 @@ describe('<Cell /> Container', () => {
   });
 
   it('Event onClick <CellLayout /> dispatches the correct actions', () => {
-    const props = {
-      disk: 'white',
-      allowed: [0, 0],
-      dispatch: jest.fn(),
-      position: [0, 0],
-      onClick: clickFn,
-    };
     wrapper.instance().reverse();
-    expect(actions.setError.mock.calls.length).toBe(0);
+    expect(props.setError.mock.calls.length).toBe(0);
     // expect(component.props().allowed).toBe(props.allowed);
   });
 });
