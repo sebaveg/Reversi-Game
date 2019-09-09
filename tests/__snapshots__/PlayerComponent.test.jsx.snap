@@ -1,54 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PlayerComponent /> Component renders correctly 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
+exports[`<Player /> Component <Player /> Component  +++ capturing snapshot of player +++ 1`] = `
+<div
+  className="wrapperPlayers"
 >
-  <Connect(Players)
-    color="white"
-    name="seba"
+  <h2>
+    Seba
+  </h2>
+  <div
+    className="circlewhite"
+  />
+  <h3>
+    Total Disks
+  </h3>
+  <div>
+    10
+  </div>
+  <h3
+    className="light"
   >
-    <Players
-      changeTurn={[Function]}
-      color="white"
-      currentPlayer="white"
-      name="seba"
-    >
-      <div
-        className="wrapperPlayers"
-      >
-        <h2>
-          seba
-        </h2>
-        <div
-          className="circlewhite"
-        />
-        <h3>
-          Total Disks
-        </h3>
-        <div />
-        <h3
-          className="light"
-        >
-           Your turn 
-        </h3>
-        <button
-          onClick={[Function]}
-          type="button"
-        >
-          Skip
-        </button>
-      </div>
-    </Players>
-  </Connect(Players)>
-</Provider>
+     Your turn 
+  </h3>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Skip
+  </button>
+</div>
 `;

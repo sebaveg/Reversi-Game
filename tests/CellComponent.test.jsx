@@ -8,6 +8,8 @@ const setUp = (props = {}) => {
   return component;
 };
 
+const clickFn = jest.fn();
+
 describe('<Cell /> Component', () => {
   describe('Have props', () => {
     let wrapper;
@@ -16,7 +18,7 @@ describe('<Cell /> Component', () => {
       const props = {
         disk: 'black',
         allowed: [0, 0],
-        onClick: jest.fn(),
+        onClick: clickFn,
       };
       wrapper = setUp(props);
     });
@@ -37,16 +39,45 @@ describe('<Cell /> Component', () => {
 
     // This can do better
     it('Simulate event onClick', () => {
-      const event = wrapper.find('td').simulate('click');
-      expect(event.type()).toEqual('td');
+      wrapper.find('td').simulate('click');
+      expect(clickFn).toHaveBeenCalled();
+    });
+  });
+
+  describe('Have Other props', () => {
+    let wrapper;
+
+    it('should render one <td> disk WHITE', () => {
+      const props = {
+        disk: 'white',
+        allowed: [0, 0],
+        onClick: clickFn,
+      };
+      wrapper = setUp(props);
+      const component = wrapper.find('td');
+      expect(component.length).toBe(1);
     });
 
-    describe('Have NO props', () => {
-      let wrapper;
+    it('should render one <td> disk NULL', () => {
+      const props = {
+        disk: null,
+        allowed: [0, 0],
+        onClick: clickFn,
+      };
+      wrapper = setUp(props);
+      const component = wrapper.find('td');
+      expect(component.length).toBe(1);
+    });
 
-      beforeEach(() => {
-        wrapper = setUp();
-      });
+    it('should render one <td> allowed NULL', () => {
+      const props = {
+        disk: null,
+        allowed: [],
+        onClick: clickFn,
+      };
+      wrapper = setUp(props);
+      const component = wrapper.find('td');
+      expect(component.length).toBe(1);
     });
   });
 });

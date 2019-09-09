@@ -41,7 +41,7 @@ describe('<Board /> Container', () => {
     wrapper = shallow(<Board store={store} />).childAt(0).dive();
   });
 
-  it(' +++ capturing snapshot of home', () => {
+  it(' +++ capturing snapshot of board +++', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
