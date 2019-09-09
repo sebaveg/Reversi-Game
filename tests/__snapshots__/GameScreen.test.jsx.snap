@@ -1,37 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GameScreen /> Container  +++ capturing snapshot of home 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "notify": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": null,
-      },
-    }
-  }
->
-  <Connect(GameScreen) />
-</ContextProvider>
+exports[`<GameScreen /> Container  +++ capturing snapshot of GameScreen 1`] = `
+<Fragment>
+  <section
+    className="flexContainer"
+  >
+    <div
+      className="flexItem"
+    >
+      <Connect(Players) />
+    </div>
+    <div
+      className="flexItem"
+    >
+      <Connect(Board) />
+    </div>
+    <div
+      className="flexItem"
+    >
+      <Connect(Players) />
+    </div>
+  </section>
+  <h2
+    className="title"
+  >
+    MOVIMENTS
+  </h2>
+  <div
+    className="wrapper-history"
+  >
+    <table
+      cellPadding="5"
+      className="table-history"
+    >
+      <thead>
+        <tr
+          key="0"
+        >
+          <th>
+            Nª
+          </th>
+          <th>
+            Color Disk
+          </th>
+          <th>
+            Position
+          </th>
+          <th>
+            Come back
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</Fragment>
 `;

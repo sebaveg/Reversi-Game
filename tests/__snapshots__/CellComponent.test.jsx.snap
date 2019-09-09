@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GameScreen /> rendering renders correctly 1`] = `
+exports[`<Cell /> Component Have props renders correctly 1`] = `
 <td
-  className="cell"
+  className="highlight"
 >
   <div
     className="black"

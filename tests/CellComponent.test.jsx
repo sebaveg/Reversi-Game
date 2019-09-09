@@ -3,34 +3,43 @@
 import React from 'react';
 import Cell from '../src/components/Cell';
 
-function createTestProps(props) {
-  return {
-    disk: 'black',
-    allowed: [],
-    ...props,
-  };
-}
+const setUp = (props = {}) => {
+  const component = shallow(<Cell {...props} />);
+  return component;
+};
 
-let wrapper;
-let props;
+describe('<Cell /> Component', () => {
+  describe('Have props', () => {
+    let wrapper;
 
-beforeEach(() => {
-  props = createTestProps();
-  wrapper = shallow(<Cell {...props} />);
-});
+    beforeEach(() => {
+      const props = {
+        disk: 'black',
+        allowed: [0, 0],
+      };
+      wrapper = setUp(props);
+    });
 
-wrapper = shallow(
-  <Cell diks="black" allowed={[]}>ID</Cell>,
-);
+    it('renders correctly', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
 
-describe('<GameScreen /> rendering', () => {
-  it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-  it('should render one <td>', () => {
-    expect(wrapper.find('td')).toHaveLength(1);
-  });
-  it('should render one <div>', () => {
-    expect(wrapper.find('div')).toHaveLength(1);
+    it('should render one <td>', () => {
+      const component = wrapper.find('td');
+      expect(component.length).toBe(1);
+    });
+
+    it('should render one <div>', () => {
+      const component = wrapper.find('div');
+      expect(component.length).toBe(1);
+    });
+
+    describe('Have NO props', () => {
+      let wrapper;
+
+      beforeEach(() => {
+        wrapper = setUp();
+      });
+    });
   });
 });

@@ -1,37 +1,238 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` Snapshoot --- <Board /> Container  +++ capturing snapshot of home 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "notify": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "clearActions": [Function],
-          "dispatch": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": null,
-      },
+exports[`<Board /> Container  +++ capturing snapshot of home 1`] = `
+<Fragment>
+  <Board
+    board={
+      Array [
+        Array [
+          Object {
+            "id": "A1",
+          },
+          Object {
+            "id": "A2",
+          },
+          Object {
+            "id": "A3",
+          },
+          Object {
+            "id": "A4",
+          },
+          Object {
+            "id": "A5",
+          },
+          Object {
+            "id": "A6",
+          },
+          Object {
+            "id": "A7",
+          },
+          Object {
+            "id": "A8",
+          },
+        ],
+        Array [
+          Object {
+            "id": "B1",
+          },
+          Object {
+            "id": "B2",
+          },
+          Object {
+            "id": "B3",
+          },
+          Object {
+            "id": "B4",
+          },
+          Object {
+            "id": "B5",
+          },
+          Object {
+            "id": "B6",
+          },
+          Object {
+            "id": "B7",
+          },
+          Object {
+            "id": "B8",
+          },
+        ],
+        Array [
+          Object {
+            "id": "C1",
+          },
+          Object {
+            "id": "C2",
+          },
+          Object {
+            "id": "C3",
+          },
+          Object {
+            "id": "C4",
+          },
+          Object {
+            "id": "C5",
+          },
+          Object {
+            "id": "C6",
+          },
+          Object {
+            "id": "C7",
+          },
+          Object {
+            "id": "C8",
+          },
+        ],
+        Array [
+          Object {
+            "id": "D1",
+          },
+          Object {
+            "id": "D2",
+          },
+          Object {
+            "id": "D3",
+          },
+          Object {
+            "id": "D4",
+          },
+          Object {
+            "id": "D5",
+          },
+          Object {
+            "id": "D6",
+          },
+          Object {
+            "id": "D7",
+          },
+          Object {
+            "id": "D8",
+          },
+        ],
+        Array [
+          Object {
+            "id": "E1",
+          },
+          Object {
+            "id": "E2",
+          },
+          Object {
+            "id": "E3",
+          },
+          Object {
+            "id": "E4",
+          },
+          Object {
+            "id": "E5",
+          },
+          Object {
+            "id": "E6",
+          },
+          Object {
+            "id": "E7",
+          },
+          Object {
+            "id": "E8",
+          },
+        ],
+        Array [
+          Object {
+            "id": "F1",
+          },
+          Object {
+            "id": "F2",
+          },
+          Object {
+            "id": "F3",
+          },
+          Object {
+            "id": "F4",
+          },
+          Object {
+            "id": "F5",
+          },
+          Object {
+            "id": "F6",
+          },
+          Object {
+            "id": "F7",
+          },
+          Object {
+            "id": "F8",
+          },
+        ],
+        Array [
+          Object {
+            "id": "G1",
+          },
+          Object {
+            "id": "G2",
+          },
+          Object {
+            "id": "G3",
+          },
+          Object {
+            "id": "G4",
+          },
+          Object {
+            "id": "G5",
+          },
+          Object {
+            "id": "G6",
+          },
+          Object {
+            "id": "G7",
+          },
+          Object {
+            "id": "G8",
+          },
+        ],
+        Array [
+          Object {
+            "id": "H1",
+          },
+          Object {
+            "id": "H2",
+          },
+          Object {
+            "id": "H3",
+          },
+          Object {
+            "id": "H4",
+          },
+          Object {
+            "id": "H5",
+          },
+          Object {
+            "id": "H6",
+          },
+          Object {
+            "id": "H7",
+          },
+          Object {
+            "id": "H8",
+          },
+        ],
+      ]
     }
-  }
->
-  <Connect(Board) />
-</ContextProvider>
+  />
+  <div
+    className="wrapper-btn-undo-redo"
+  >
+    <button
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Undo
+    </button>
+    <button
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Redo
+    </button>
+  </div>
+</Fragment>
 `;

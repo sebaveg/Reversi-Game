@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PlayerComponent /> component renders correctly 1`] = `
+exports[`<PlayerComponent /> Component renders correctly 1`] = `
 <Provider
   store={
     Object {
@@ -20,6 +20,7 @@ exports[`<PlayerComponent /> component renders correctly 1`] = `
     <Players
       changeTurn={[Function]}
       color="white"
+      currentPlayer="white"
       name="seba"
     >
       <div
@@ -35,6 +36,17 @@ exports[`<PlayerComponent /> component renders correctly 1`] = `
           Total Disks
         </h3>
         <div />
+        <h3
+          className="light"
+        >
+           Your turn 
+        </h3>
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          Skip
+        </button>
       </div>
     </Players>
   </Connect(Players)>
