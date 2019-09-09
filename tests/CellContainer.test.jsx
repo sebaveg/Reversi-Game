@@ -1,9 +1,20 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import configureMockStore from 'redux-mock-store';
+import * as actions from '../src/actions';
+
 import Cell from '../src/containers/Cell';
 
 import CellLayout from '../src/components/Cell';
+
+const clickFn = jest.fn();
+
+// Mock the actions we expect to be called
+actions.changeTurn = jest.fn();
+actions.setError = jest.fn();
+actions.setPositionDisk = jest.fn();
+actions.setPosDisksWhite = jest.fn();
+actions.setPosDisks = jest.fn();
 
 const initialState = {
   error: '',
@@ -11,7 +22,7 @@ const initialState = {
     past: [],
     present: {
       board: [
-        [{ id: 'A1' }, { id: 'A2' }, { id: 'A3' }, { id: 'A4' }, { id: 'A5' }, { id: 'A6' }, { id: 'A7' }, { id: 'A8' }],
+        [{ id: 'A1', allowedCell: [] }, { id: 'A2' }, { id: 'A3' }, { id: 'A4' }, { id: 'A5' }, { id: 'A6' }, { id: 'A7' }, { id: 'A8' }],
         [{ id: 'B1' }, { id: 'B2' }, { id: 'B3' }, { id: 'B4' }, { id: 'B5' }, { id: 'B6' }, { id: 'B7' }, { id: 'B8' }],
         [{ id: 'C1' }, { id: 'C2' }, { id: 'C3' }, { id: 'C4' }, { id: 'C5' }, { id: 'C6' }, { id: 'C7' }, { id: 'C8' }],
         [{ id: 'D1' }, { id: 'D2' }, { id: 'D3' }, { id: 'D4' }, { id: 'D5' }, { id: 'D6' }, { id: 'D7' }, { id: 'D8' }],
@@ -28,11 +39,24 @@ const initialState = {
 
 const mockStore = configureMockStore();
 
+const setUp = (props = {}) => {
+  const store = mockStore(initialState);
+  const component = shallow(<Cell store={store} {...props} />).childAt(0).dive();
+  console.log(component.debug());
+  return component;
+};
+
 describe('<Cell /> Container', () => {
   let wrapper;
   beforeEach(() => {
-    const store = mockStore(initialState);
-    wrapper = shallow(<Cell store={store} />).childAt(0).dive();
+    const props = {
+      disk: 'white',
+      allowed: [0, 0],
+      dispatch: jest.fn(),
+      position: [0, 0],
+      onClick: clickFn,
+    };
+    wrapper = setUp(props);
   });
 
   it(' +++ capturing snapshot of home', () => {
@@ -42,5 +66,29 @@ describe('<Cell /> Container', () => {
   it('should render one <CellLayout /> component', () => {
     const component = wrapper.find(CellLayout);
     expect(component.length).toBe(1);
+  });
+
+  it('Props in <CellLayout /> component', () => {
+    const props = {
+      disk: 'white',
+      allowed: [0, 0],
+      onClick: clickFn,
+    };
+    const component = wrapper.find(CellLayout);
+    expect(component.props().disk).toBe(props.disk);
+    // expect(component.props().allowed).toBe(props.allowed);
+  });
+
+  it('Event onClick <CellLayout /> dispatches the correct actions', () => {
+    const props = {
+      disk: 'white',
+      allowed: [0, 0],
+      dispatch: jest.fn(),
+      position: [0, 0],
+      onClick: clickFn,
+    };
+    wrapper.instance().reverse();
+    expect(actions.setError.mock.calls.length).toBe(0);
+    // expect(component.props().allowed).toBe(props.allowed);
   });
 });

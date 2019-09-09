@@ -2,6 +2,13 @@
 
 exports[`<Cell /> Container  +++ capturing snapshot of home 1`] = `
 <Cell
+  allowed={
+    Array [
+      0,
+      0,
+    ]
+  }
+  disk="white"
   onClick={[Function]}
 />
 `;

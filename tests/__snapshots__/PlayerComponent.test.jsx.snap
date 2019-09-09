@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Player /> Component <Player /> Component  +++ capturing snapshot of player +++ 1`] = `
+exports[`<Player /> Component <Player /> Props disk white  +++ capturing snapshot of player +++ 1`] = `
 <div
   className="wrapperPlayers"
 >

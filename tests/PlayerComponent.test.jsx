@@ -22,7 +22,7 @@ const setUp = (props = {}) => {
 
 describe('<Player /> Component', () => {
   let wrapper;
-  describe('<Player /> Component', () => {
+  describe('<Player /> Props disk white', () => {
     beforeEach(() => {
       const props = {
         name: 'Seba',
@@ -56,12 +56,11 @@ describe('<Player /> Component', () => {
     });
 
     // it('Simulate event onClick', () => {
-    //   const clickFn = jest.fn();
+    //   console.log(wrapper.props());
     //   wrapper.find('button').simulate('click');
-    //   expect(clickFn).toHaveBeenCalled();
     // });
   });
-  describe('<Player /> Component', () => {
+  describe('<Player /> Props disk black', () => {
     beforeEach(() => {
       const props = {
         name: 'Oponente',

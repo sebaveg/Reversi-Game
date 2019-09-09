@@ -15,7 +15,7 @@ import '../assets/styles/Cell.css';
 
 class Cell extends Component {
   // reverse disks oponent
-  async reverse() {
+  reverse() {
     if (this.props.allowed.length > 0) {
       const x = this.props.position[0];
       const y = this.props.position[1];
