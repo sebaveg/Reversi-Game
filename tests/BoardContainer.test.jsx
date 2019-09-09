@@ -60,6 +60,26 @@ describe('<Board /> Container', () => {
     expect(component.length).toBe(1);
   });
 
+  it('Invoke function diskOponent', () => {
+    const fn = wrapper.instance().diskOponent();
+    expect(fn).toEqual('white');
+  });
+
+  it('Invoke function inBoard', () => {
+    const fn = wrapper.instance().inBoard(7, 7);
+    expect(fn).toBe(true);
+  });
+
+  it('Invoke function inBoard', () => {
+    const fn = wrapper.instance().inBoard(8, 8);
+    expect(fn).toBe(false);
+  });
+
+  // it('Invoke function createBoard', () => {
+  //   const fn = wrapper.instance().createBoard();
+  //   expect(fn).isArray();
+  // });
+
   it('+++ check prop matches with initialState', () => {
     // expect(container.prop('board')).toEqual(initialState.board.present);
     expect(wrapper.prop('posDiskWhite')).toEqual(initialState.posDiskWhite);

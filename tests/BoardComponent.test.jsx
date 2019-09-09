@@ -11,7 +11,7 @@ const wrapper = shallow(
   <Board />,
 );
 
-describe('<GameScreen /> rendering', () => {
+describe('<Board /> Component', () => {
   it('renders correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });

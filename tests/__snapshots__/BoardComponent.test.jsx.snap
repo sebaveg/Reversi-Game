@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GameScreen /> rendering renders correctly 1`] = `
+exports[`<Board /> Component renders correctly 1`] = `
 <table
   className="Board"
 >

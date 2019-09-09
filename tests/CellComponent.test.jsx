@@ -4,7 +4,7 @@ import React from 'react';
 import Cell from '../src/components/Cell';
 
 const setUp = (props = {}) => {
-  const component = shallow(<Cell {...props} />);
+  const component = shallow(<Cell {...props}>ID</Cell>);
   return component;
 };
 
@@ -16,6 +16,7 @@ describe('<Cell /> Component', () => {
       const props = {
         disk: 'black',
         allowed: [0, 0],
+        onClick: jest.fn(),
       };
       wrapper = setUp(props);
     });
@@ -32,6 +33,12 @@ describe('<Cell /> Component', () => {
     it('should render one <div>', () => {
       const component = wrapper.find('div');
       expect(component.length).toBe(1);
+    });
+
+    // This can do better
+    it('Simulate event onClick', () => {
+      const event = wrapper.find('td').simulate('click');
+      expect(event.type()).toEqual('td');
     });
 
     describe('Have NO props', () => {

@@ -3,6 +3,7 @@
 exports[`<Cell /> Component Have props renders correctly 1`] = `
 <td
   className="highlight"
+  onClick={[MockFunction]}
 >
   <div
     className="black"

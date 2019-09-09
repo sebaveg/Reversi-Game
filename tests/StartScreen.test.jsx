@@ -48,4 +48,13 @@ describe('<Cell /> Container', () => {
   it(' +++ should render one <button>', () => {
     expect(wrapper.find('button')).toHaveLength(1);
   });
+
+  // it('User insert name player One', () => {
+  //   wrapper.find('[name="namePlayerOne"]').simulate('change', { target: { value: 'Player One' } });
+  //   expect(wrapper.find('[name="namePlayerOne"]').props().value).toEqual('Player One');
+  // });
+  // it('User insert name player Two', () => {
+  //   wrapper.find('[name="namePlayerTwo"]').simulate('change', { target: { value: 'Player Two' } });
+  //   expect(wrapper.find('[name="namePlayerTwo"]').props().value).toEqual('Player Two');
+  // });
 });
