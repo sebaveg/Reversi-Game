@@ -16,6 +16,7 @@ const mockStore = configureMockStore();
 
 const setUp = (props = {}) => {
   const store = mockStore(initialState);
+  // eslint-disable-next-line react/jsx-props-no-spreading
   const component = shallow(<Player store={store} {...props} />).childAt(0).dive();
   return component;
 };

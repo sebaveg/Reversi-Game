@@ -87,22 +87,3 @@ describe('<Board /> Container', () => {
     expect(wrapper.prop('currentPlayer')).toEqual(initialState.currentPlayer);
   });
 });
-
-// describe('<Board /> rendering', () => {
-//   beforeEach(() => {
-//     store = mockStore(initialState);
-//     container = shallow(<Board store={store} />);
-//   });
-//   it('+++ <Board /> Container', () => {
-//     expect(container.length).toEqual(1);
-//   });
-//   // });
-
-// });
-
-// describe('<Board /> rendering', () => {
-//   beforeEach(() => {
-//     store = mockStore(initialState);
-//     component = mount(<Board />);
-//   });
-// });

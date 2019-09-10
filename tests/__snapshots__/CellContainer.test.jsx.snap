@@ -1,13 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Cell /> Container  +++ capturing snapshot of home 1`] = `
+exports[`<Cell /> Container <Cell /> Container without allowed cells  +++ capturing snapshot of home 1`] = `
 <Cell
-  allowed={
-    Array [
-      0,
-      0,
-    ]
-  }
+  allowed={Array []}
   disk="white"
   onClick={[Function]}
 />
