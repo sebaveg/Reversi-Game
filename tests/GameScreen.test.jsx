@@ -5,10 +5,12 @@ import GameScreen from '../src/screens/GameScreen';
 
 import Players from '../src/components/Players';
 
+const historyMock = { push: jest.fn() }; // for this.props.history.push
+
 const initialState = {
   game: {
     error: '',
-    allowedCells: '',
+    allowedCells: 0,
   },
   disks: {
     past: [],
@@ -40,12 +42,21 @@ const initialState = {
 };
 
 const mockStore = configureMockStore();
+const store = mockStore(initialState);
+
+const setUp = (props = {}) => {
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  const component = shallow(<GameScreen store={store} {...props} />).childAt(0).dive();
+  return component;
+};
 
 describe('<GameScreen /> Container', () => {
   let wrapper;
+  const props = {
+    history: historyMock,
+  };
   beforeEach(() => {
-    const store = mockStore(initialState);
-    wrapper = shallow(<GameScreen store={store} />).childAt(0).dive();
+    wrapper = setUp(props);
   });
 
   it(' +++ capturing snapshot of GameScreen', () => {
@@ -75,5 +86,10 @@ describe('<GameScreen /> Container', () => {
   it('should render one <table>', () => {
     const component = wrapper.find('table');
     expect(component.length).toBe(1);
+  });
+
+  it('<GameScreen /> Container', () => {
+    const componentInstance = wrapper.instance();
+    componentInstance.componentDidUpdate();
   });
 });
