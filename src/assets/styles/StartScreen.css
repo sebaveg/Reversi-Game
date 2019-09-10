@@ -48,6 +48,10 @@
   background-color: darkgreen;
 }
 
+.button:disabled {
+  opacity: .5;
+}
+
 .button a {
   color: white;
   display: block;

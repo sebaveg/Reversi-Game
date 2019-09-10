@@ -60,4 +60,9 @@ describe('<StartScreen /> Container', () => {
     wrapper.find('input[name="namePlayerTwo"]').simulate('change', { target: { value: 'Player Two' } });
     expect(wrapper.find('input[name="namePlayerTwo"]').prop('value')).toEqual('Player Two');
   });
+
+  it('Form submit', () => {
+    wrapper.find('button').simulate('click');
+    expect(wrapper.find('input[name="namePlayerOne"]').prop('value')).toEqual('Player One');
+  });
 });

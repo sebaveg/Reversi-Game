@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setNamePlayers, setColorPlayers } from '../actions';
 
@@ -10,6 +10,16 @@ const StartScreen = (props) => {
     namePlayerOne: '',
     namePlayerTwo: '',
   });
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  const validateForm = () => {
+    setIsButtonDisabled(!(players.namePlayerOne.length > 0 && players.namePlayerTwo.length > 0));
+  };
+
+  // validdate names are set
+  useEffect(() => {
+    validateForm();
+  }, [players]);
 
   // get value between 0 and 1. If value > 0.5 is 50% probability
   const randomColorDisk = () => (Math.random() > 0.5 ? 'white' : 'black');
@@ -41,7 +51,7 @@ const StartScreen = (props) => {
           <h2>Player two</h2>
           <input type="text" name="namePlayerTwo" value={players.namePlayerTwo} placeholder="Insert name for player two" maxLength="25" onChange={handleInput} />
         </div>
-        <button type="submit" className="button">Start</button>
+        <button type="submit" disabled={isButtonDisabled} className="button">Start</button>
       </form>
     </section>
   );
