@@ -42,19 +42,22 @@ describe('<StartScreen /> Container', () => {
   it(' +++ should render one <h2>', () => {
     expect(wrapper.find('h2')).toHaveLength(2);
   });
-  it(' +++ should render one <input>', () => {
-    expect(wrapper.find('input')).toHaveLength(2);
+  it(' +++ should render one <input name="namePlayerOne">', () => {
+    expect(wrapper.find('input[name="namePlayerOne"]')).toHaveLength(1);
+  });
+  it(' +++ should render one <input name="namePlayerTwo">', () => {
+    expect(wrapper.find('input[name="namePlayerTwo"]')).toHaveLength(1);
   });
   it(' +++ should render one <button>', () => {
     expect(wrapper.find('button')).toHaveLength(1);
   });
 
-  // it('User insert name player One', () => {
-  //   wrapper.find('[name="namePlayerOne"]').simulate('change', { target: { value: 'Player One' } });
-  //   expect(wrapper.find('[name="namePlayerOne"]').props().value).toEqual('Player One');
-  // });
-  // it('User insert name player Two', () => {
-  //   wrapper.find('[name="namePlayerTwo"]').simulate('change', { target: { value: 'Player Two' } });
-  //   expect(wrapper.find('[name="namePlayerTwo"]').props().value).toEqual('Player Two');
-  // });
+  it('User insert name player One', () => {
+    wrapper.find('input[name="namePlayerOne"]').simulate('change', { target: { value: 'Player One' } });
+    expect(wrapper.find('input[name="namePlayerOne"]').prop('value')).toEqual('Player One');
+  });
+  it('User insert name player Two', () => {
+    wrapper.find('input[name="namePlayerTwo"]').simulate('change', { target: { value: 'Player Two' } });
+    expect(wrapper.find('input[name="namePlayerTwo"]').prop('value')).toEqual('Player Two');
+  });
 });
