@@ -8,7 +8,10 @@ exports[`<GameScreen /> Container  +++ capturing snapshot of GameScreen 1`] = `
     <div
       className="flexItem"
     >
-      <Connect(Players) />
+      <Connect(Players)
+        color="white"
+        name="Player One"
+      />
     </div>
     <div
       className="flexItem"
@@ -18,7 +21,10 @@ exports[`<GameScreen /> Container  +++ capturing snapshot of GameScreen 1`] = `
     <div
       className="flexItem"
     >
-      <Connect(Players) />
+      <Connect(Players)
+        color="black"
+        name="Player Two"
+      />
     </div>
   </section>
   <h2

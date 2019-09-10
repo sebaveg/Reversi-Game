@@ -37,8 +37,6 @@ class GameScreen extends Component {
   }
 
   handleJump() {
-    console.log('JUMP');
-    console.log(this.pos);
     this.self.props.onJump(this.pos);
   }
 

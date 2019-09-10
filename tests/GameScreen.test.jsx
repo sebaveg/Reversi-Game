@@ -26,8 +26,16 @@ const initialState = {
     future: [],
   },
   players: {
-    playerOne: '',
-    playerTwo: '',
+    playerOne: {
+      name: 'Player One',
+      colorDisk: 'white',
+      totalDisk: 10,
+    },
+    playerTwo: {
+      name: 'Player Two',
+      colorDisk: 'black',
+      totalDisk: 2,
+    },
   },
 };
 

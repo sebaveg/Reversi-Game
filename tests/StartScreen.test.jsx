@@ -12,20 +12,20 @@ let store;
 let container;
 let wrapper;
 
-describe('<Cell /> Container', () => {
+describe('<StartScreen /> Container', () => {
   beforeEach(() => {
     store = mockStore(initialState);
-    container = shallow(<Provider store={store}><StartScreen /></Provider>);
+    container = shallow(<StartScreen store={store} />);
   });
   it(' +++ capturing snapshot of home', () => {
     expect(container).toMatchSnapshot();
   });
 });
 
-describe('<Cell /> Container', () => {
+describe('<StartScreen /> Container', () => {
   beforeEach(() => {
     store = mockStore(initialState);
-    wrapper = mount(<Provider store={store}><StartScreen /></Provider>);
+    wrapper = mount(<StartScreen store={store} />);
   });
   it(' +++ should render one <section>', () => {
     expect(wrapper.find('section')).toHaveLength(1);
